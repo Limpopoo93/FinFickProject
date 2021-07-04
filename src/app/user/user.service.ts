@@ -1,8 +1,8 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {User} from "./user";
-import {environment} from "../environments/environment";
+import {User} from "../model/user";
+import {environment} from "../../environments/environment";
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -31,5 +31,8 @@ export class UserService{
   }
   public login(user: User){
     return this.http.post<any>(`${this.apiServerUrl}/user/login`, user)
+  }
+  public getUser(user: User): Observable<User>{
+    return this.http.post<User>(`${this.apiServerUrl}/user//userGetOne`, user);
   }
 }

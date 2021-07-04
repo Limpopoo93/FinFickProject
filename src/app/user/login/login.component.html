@@ -1,0 +1,37 @@
+
+
+<div id="featured-wrapper1">
+  <div class="site-wrap">
+    <main class="main-content">
+      <section class="site-section darken-bg" id="section-contact">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <h2 class="text-white mb-5 heading">SungIn</h2>
+              <form #loginForm="ngForm" (ngSubmit)="onLogIsnUser(loginForm)">
+                <div class="row form-group">
+                  <div class="col-md-12">
+                    <label class="text-white">Login</label>
+                    <input type="text" id="login" class="form-control" ngModel name="login" placeholder="Login">
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-md-12">
+                    <label class="text-white">Password</label>
+                    <input type="password" id="password" class="form-control" ngModel name="password" placeholder="Password">
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-md-12">
+                    <p> <button type="submit" [disabled]="loginForm.invalid" id="loginUser">Login <i class="fa fa-angle-right"></i></button></p>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+  </div>
+</div>

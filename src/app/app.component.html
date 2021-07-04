@@ -13,16 +13,17 @@
 <div id="header-wrapper">
   <div id="header" class="container">
     <div id="logo">
-      <h1><span class="fa fa-bolt"></span><a href="#">Fun fic project</a></h1>
+      <h1><span class="fa fa-bolt"></span><a>Fun fic project</a></h1>
     </div>
     <div id="menu">
       <ul>
-        <li class="current_page_item"><a href="#" accesskey="1" title="">Home</a></li>
+        <li class="current_page_item"><a (click)="showMessageSoon2()" accesskey="1" title="">Home</a></li>
         <li><a (click)="showMessageSoon()" accesskey="2" title="">Sing in</a></li>
         <li><a (click)="showMessageSoon1()" accesskey="3" title="">Sing up</a></li>
+        <li><a (click)="showMessageSoon6()" accesskey="5" title="">setting</a></li>
         <div *ngIf="showMyMessage4">
         <li><a href="#" accesskey="4" title="">out</a></li>
-        <li><a href="#" accesskey="5" title="">setting</a></li>
+
         <li><a href="#" accesskey="5" title="">add fun fic</a></li>
         </div>
       </ul>
@@ -36,86 +37,33 @@
         </div>
   </div>
 </div>
-<div id="wrapper" *ngIf="showMyMessage3">
-  <div id="featured-wrapper">
-    <div id="featured" class="extra2 margin-btm container">
-      <div class="main-title">
-        <h2>Our best products</h2>
-        <span class="byline"></span> </div>
-
-      <div class="ebox1"> <span class="fa fa-pagelines"></span>
-        <div class="title">
-          <h2>Название</h2>
-          <span class="byline">теги</span> </div>
-        <p>Короткое описание </p>
-        <p>Жанр </p>
-        <a href="#" class="button">More detailed</a> </div>
-      <div class="ebox2"> <span class="fa fa-anchor"></span>
-        <div class="title">
-          <h2>Название</h2>
-          <span class="byline">теги</span> </div>
-        <p>Короткое описание</p>
-        <p>Жанр </p>
-        <a href="#" class="button">More detailed</a> </div>
-    </div>
-  </div>
+<!--
+для таблицы fun fic
+-->
+<div *ngIf="showMyMessage3">
+<app-fun-fic-table></app-fun-fic-table>
 </div>
+<!--
+для формы логина
+-->
 <div *ngIf="showMyMessage">
-  <form #loginForm="ngForm" (ngSubmit)="onLogIsnUser(loginForm)">
-    <div class="fullwidth-cotnent-block hero-bg-1">
-      <div class="fullwidth-content-tablecell">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6 col-md-offset-3 text-center">
-              <div class="login-style-2">
-                <div class="login-logo">
-                  <h1><a href="index.html">Login</a></h1>
-                </div>
-
-                <div class="login-form-style-2">
-                  <p><input type="text" ngModel name="login" placeholder="Login"></p>
-                  <p><input type="password" ngModel name="password" placeholder="Password"></p>
-                  <p><button type="submit" [disabled]="loginForm.invalid" id="loginUser">Login <i class="fa fa-angle-right"></i></button></p>
-                  <p class="password-reset-text">Forget your password? click <a href="index.html">here</a>.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
+<app-login (onShowElementIn)="showMessageSoon7()"></app-login>
 </div>
-
+<!--
+для формы регистрации
+-->
 <div *ngIf="showMyMessage1">
-  <form #addForm="ngForm" (ngSubmit)="onAddUser(addForm)">
-    <div class="fullwidth-cotnent-block hero-bg-1">
-      <div class="fullwidth-content-tablecell">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6 col-md-offset-3 text-center">
-              <div class="login-style-2">
-                <div class="login-logo">
-                  <h1><a href="index.html">Registration</a></h1>
-                </div>
-
-                <div class="login-form-style-2">
-                  <p><input type="text" ngModel name="login" placeholder="Login"></p>
-                  <p><input type="password" ngModel name="password" placeholder="Password"></p>
-                  <p><input type="text" ngModel name="email" placeholder="Email"></p>
-                  <p><input type="text" ngModel name="nameUser" placeholder="Name"></p>
-                  <p><input type="text" ngModel name="surnameUser" placeholder="Surname"></p>
-                  <p><button type="submit" [disabled]="addForm.invalid" id="addUser">Registration <i class="fa fa-angle-right"></i></button></p>
-                  <p class="password-reset-text">Forget your password? click <a href="index.html">here</a>.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
-
+<app-registration (onShowElementUn)="showMessageSoon7()"></app-registration>
+</div>
+<!--
+форма лист chapter
+-->
+<app-chapter></app-chapter>
+<!--
+форма персональных данных setting
+-->
+<div *ngIf="showMyMessage6">
+<app-user [user]="user1"></app-user>
 </div>
 
 <div id="copyright" class="container">

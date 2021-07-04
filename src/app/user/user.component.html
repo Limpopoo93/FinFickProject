@@ -1,0 +1,233 @@
+<div id="featured-wrapper1">
+  <div id="preloaderKDZ"></div>
+  <div class="yolo-site">
+    <div id="example-wrapper">
+      <div class="div-box mb mt">
+        <div class="container">
+          <div class="form-customers">
+            <h2 class="title-style title-style-1 mb-45 text-center"><span class="title-left">Our </span><span
+              class="title-right">Services</span></h2>
+            <div class="row1">
+              <div class="col-md-3 col-sm-6 row23">
+                <div class="style_4 icon-box-shortcode-wrap">
+                  <div class="icon-box-container">
+                    <div class="icon-wrap">
+                      <div class="icon-main bg-base"><span class="fa fa-leaf color-fff"></span></div>
+                    </div>
+                    <div class="icon-content">
+                      <div class="icon-title">Upgrade</div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 row23">
+                <div class="style_4 icon-box-shortcode-wrap">
+                  <div class="icon-box-container">
+                    <div class="icon-wrap">
+                      <div class="icon-main bg-base"><span class="fa fa-leaf color-fff"></span></div>
+                    </div>
+
+                    <div class="icon-content">
+                      <div class="icon-title">
+                        <a (click)="getUserListFunficId()" class="button">Fun Fic</a></div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 row23">
+              <div class="style_4 icon-box-shortcode-wrap">
+                <div class="icon-box-container">
+                  <div class="icon-wrap">
+                    <div class="icon-main bg-base"><span class="fa fa-leaf color-fff"></span></div>
+                  </div>
+                  <div class="icon-content">
+                    <div class="icon-title">Updated info</div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 row23">
+              <div class="style_4 icon-box-shortcode-wrap">
+                <div class="icon-box-container">
+                  <div class="icon-wrap">
+                    <div class="icon-main bg-base"><span class="fa fa-leaf color-fff"></span></div>
+                  </div>
+                  <div class="icon-content">
+                    <div class="icon-title">Мои закладки</div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div *ngIf="showMyMessage7">
+          <form class="checkout">
+            <h3 id="order_review_heading">Your information</h3>
+            <div id="order_review" class="product-begreen-checkout-review-order">
+              <table class="shop_table product-begreen-checkout-review-order-table tableUserr">
+                <tbody>
+                <tr class="cart_item">
+                  <td class="product-name"><strong class="product-quantity">Login</strong></td>
+                  <td class="product-total"><span class="product-begreen-price-amount amount"><span
+                    class="product-begreen-price-currencysymbol"></span>{{user.login}}</span></td>
+                </tr>
+                <tr class="cart_item">
+                  <td class="product-name"><strong class="product-quantity">Name</strong></td>
+                  <td class="product-total"><span class="product-begreen-price-amount amount"><span
+                    class="product-begreen-price-currencysymbol"></span>{{user.nameUser}}</span></td>
+                </tr>
+                </tbody>
+                <tr class="cart_item">
+                  <td class="product-name"><strong class="product-quantity">Surname</strong></td>
+                  <td class="product-total"><span class="product-begreen-price-amount amount"><span
+                    class="product-begreen-price-currencysymbol"></span>{{user.surnameUser}}</span></td>
+                </tr>
+                <tr class="cart_item">
+                  <td class="product-name"><strong class="product-quantity">Email</strong></td>
+                  <td class="product-total"><span class="product-begreen-price-amount amount"><span
+                    class="product-begreen-price-currencysymbol"></span>{{user.email}}</span></td>
+                </tr>
+                <tr class="cart_item">
+                  <td class="product-name"><strong class="product-quantity">Status</strong></td>
+                  <td class="product-total"><span class="product-begreen-price-amount amount"><span
+                    class="product-begreen-price-currencysymbol"></span>{{user.status}}</span></td>
+                </tr>
+              </table>
+            </div>
+          </form>
+        </div>
+
+        <div>
+          <div id="wrapper" *ngIf="showMyMessage8">
+            <div id="featured-wrapper">
+              <div id="featured" class="extra2 margin-btm container">
+                <div class="main-title">
+                  <h2>Our best products</h2>
+                  <span class="byline"></span></div>
+                <table>
+                  <th>
+                    <ul *ngIf="funFicList">
+                      <li
+                        *ngFor="let funFiction of funFicList | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalLength }">
+
+                        <div class="ebox1"><span class="fa fa-pagelines"></span>
+                          <div class="title">
+                            <h2>Name: {{funFiction.nameFun}}</h2>
+                            <div *ngFor="let tags of funFiction.tags">
+                              <span class="byline">Tags: {{tags.typeTags}}</span></div>
+                          </div>
+                          <p>Description: {{funFiction.shortDescription}}</p>
+                          <p>Genre: {{funFiction.genre}}</p>
+                          <a (click)="getIdChapter(funFiction.id)" class="button">Read Chapter</a>
+                          <a (click)="deleteFunFicId(funFiction.id)" class="button">Delete Fun Fic</a>
+                          <a (click)="getIdChapter(funFiction.id)" class="button">Updated Fun Fic</a>
+                          <a (click)="showFunFicForm()" class="button">Add Fun Fic</a></div>
+                      </li>
+                    </ul>
+                    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+                  </th>
+                </table>
+              </div>
+            </div>
+          </div>
+
+
+          <div *ngIf="showMyMessage9">
+            <ul *ngIf="chapterList">
+              <li *ngFor="let chapter of chapterList">
+
+                  <section class="blog_area single-post-area section-padding mySetting">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-lg-8 posts-list">
+                          <div class="single-post">
+                            <div class="blog_details">
+
+                              <h2>
+                                Chapter №{{chapter.numberChapter}}
+                              </h2>
+                              <h2>{{chapter.nameChapter}}
+                              </h2>
+                              <ul class="blog-info-link mt-3 mb-4">
+                                <li><i class="fa fa-user"></i> Кол-во лайков</li>
+                                <li><a href="#"><i class="fa fa-comments"></i>Comments</a></li>
+                              </ul>
+                              <ul class="blog-info-link mt-3 mb-4">
+                              </ul>
+                              <p class="excert">
+                                {{chapter.textChapter}}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+              </li>
+            </ul>
+          </div>
+
+
+
+
+
+
+          <div *ngIf="showMyMessage10">
+
+            <div class="comment-form">
+              <h4>Add Fun Fic</h4>
+              <form class="form-contact comment_form" id="commentForm" #funFicForm="ngForm"
+                    (ngSubmit)="onFunFicPush(funFicForm)">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <input class="form-control" ngModel name="nameFun" id="nameFun" type="text" placeholder="nameFunFic">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group">
+                              <textarea class="form-control w-100" ngModel name="shortDescription" id="shortDescription"
+                                        cols="30" rows="9"
+                                        placeholder="shortDescription"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6">
+                  <div class="form-group">
+                    <div class="form-control">
+                  <div class="col-sm-6">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                      <div class="input-box mb-20">
+                        <form [formGroup]="form">
+                        <label>Genre <em></em></label>
+                        <select formControlName="country" class="selectpicker select-custom" data-live-search="true">
+                          <option *ngFor="let genre of genreList" [ngValue]="genre.typeGenre" >{{genre.typeGenre}}</option>
+                        </select>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                    </div>
+                  </div>
+                  </div>
+
+                </div>
+                <div class="form-group">
+                  <button type="submit" [disabled]="funFicForm.invalid"
+                          class="button button-contactForm btn_1 boxed-btn" id="clickMessage">Add Fun Fic
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

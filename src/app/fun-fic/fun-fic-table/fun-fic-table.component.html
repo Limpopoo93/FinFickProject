@@ -1,0 +1,122 @@
+<div id="wrapper" *ngIf="showMyMessage3">
+  <div id="featured-wrapper">
+    <div id="featured" class="extra2 margin-btm container">
+      <div class="main-title">
+        <h2>Our best products</h2>
+        <span class="byline"></span></div>
+      <table>
+        <th>
+          <ul *ngIf="funFicList">
+            <li
+              *ngFor="let funFiction of funFicList | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalLength }">
+
+              <div class="ebox1"><span class="fa fa-pagelines"></span>
+                <div class="title">
+                  <h2>Name: {{funFiction.nameFun}}</h2>
+                  <div *ngFor="let tags of funFiction.tags">
+                    <span class="byline">Tags: {{tags.typeTags}}</span></div>
+                </div>
+                <p>Description: {{funFiction.shortDescription}}</p>
+                <p>Genre: {{funFiction.genre}}</p>
+                <a (click)="getIdChapter(funFiction.id)" class="button">Read Chapter</a></div>
+            </li>
+          </ul>
+          <pagination-controls (pageChange)="page = $event"></pagination-controls>
+        </th>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="showMyMessage5">
+  <ul *ngIf="chapterList">
+    <li *ngFor="let chapter of chapterList">
+      <div id="featured-wrapper1">
+        <section class="blog_area single-post-area section-padding mySetting">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 posts-list">
+                <div class="single-post">
+                  <div class="blog_details">
+
+                    <h2>
+                      Chapter №{{chapter.numberChapter}}
+                    </h2>
+                    <h2>{{chapter.nameChapter}}
+                    </h2>
+                    <ul class="blog-info-link mt-3 mb-4">
+                      <li><i class="fa fa-user"></i> Кол-во лайков</li>
+                      <li><a href="#"><i class="fa fa-comments"></i>Comments</a></li>
+                    </ul>
+                    <ul class="blog-info-link mt-3 mb-4">
+                    </ul>
+                    <p class="excert">
+                      {{chapter.textChapter}}
+                    </p>
+                  </div>
+                </div>
+                <div class="comments-area">
+                  <h4>Comments</h4>
+                  <div *ngFor="let commentRequestDtos of chapter.commentDto">
+                    <div class="comment-list">
+                      <div class="single-comment justify-content-between d-flex">
+                        <div class="user justify-content-between d-flex">
+                          <div class="thumb">
+
+                          </div>
+                          <div class="desc">
+                            <p class="comment">
+                              {{commentRequestDtos.textComment.toString()}}
+                            </p>
+                            <div class="d-flex justify-content-between">
+                              <div class="d-flex align-items-center">
+                                <h5>
+                                  <a>{{commentRequestDtos.nameUser}} {{commentRequestDtos.surnameUser}}</a>
+                                </h5>
+                                <p class="date">{{commentRequestDtos.created}}</p>
+                              </div>
+                              <div class="reply-btn">
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="comment-form">
+                  <h4>Leave a Reply</h4>
+                  <form class="form-contact comment_form" id="commentForm" #commentForm="ngForm"
+                        (ngSubmit)="onCommentPush(commentForm, chapter.id)">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group">
+                              <textarea class="form-control w-100" ngModel name="textComments" id="textComments"
+                                        cols="30" rows="9"
+                                        placeholder="Write Comment"></textarea>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input class="form-control" ngModel name="email" id="email" type="text" placeholder="Email">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <button type="submit" [disabled]="commentForm.invalid"
+                              class="button button-contactForm btn_1 boxed-btn" id="clickMessage">Send Message
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </li>
+  </ul>
+</div>

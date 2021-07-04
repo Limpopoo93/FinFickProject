@@ -1,100 +1,71 @@
-import {Component, OnInit} from '@angular/core';
-import {User} from "./user";
-import {UserService} from "./user.service";
-import {HttpErrorResponse} from "@angular/common/http";
-import {NgForm} from "@angular/forms";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {User} from "./model/user";
+import {UserService} from "./user/user.service";
 import {BehaviorSubject} from "rxjs";
+import {FunFic} from "./model/funFic";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  // @ts-ignore
-  public users: User[];
   public showMyMessage = false;
   public showMyMessage1 = false;
   public showMyMessage3 = true;
   public showMyMessage4 = false;
+  public showMyMessage6 = false;
+
   // @ts-ignore
-  public user: User;
-  // @ts-ignore
-  private currentUserSubject: BehaviorSubject<User>;
+  user1: User;
 
   constructor(private userService: UserService) {
   }
 
   ngOnInit() {
-    this.getUsers();
   }
 
+  showMessageSoon2() {
+    this.showMyMessage = false;
+    this.showMyMessage1 = false;
+    this.showMyMessage3 = true;
+  }
+
+
+  showMessageSoon7() {
+    this.showMyMessage = false;
+    this.showMyMessage1 = false;
+    this.showMyMessage3 = true;
+    this.showMyMessage4 = true;
+  }
+
+
   showMessageSoon() {
-    setTimeout(() => {
       this.showMyMessage = true;
       this.showMyMessage1 = false;
       this.showMyMessage3 = false;
-    }, 3000)
   }
 
   showMessageSoon1() {
-    setTimeout(() => {
       this.showMyMessage1 = true;
       this.showMyMessage = false;
       this.showMyMessage3 = false;
-    }, 3000)
   }
 
-  public getUsers(): void {
-    this.userService.getUsers().subscribe(
-      (response: User[]) => {
-        this.users = response;
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    )
-  }
 
-  public onAddUser(addForm: NgForm): void {
+
+  showMessageSoon6() {
+    this.showMyMessage1 = false;
+    this.showMyMessage = false;
+    this.showMyMessage3 = false;
+    this.showMyMessage6 = true;
     // @ts-ignore
-    document.getElementById("addUser").click();
-    this.userService.addUser(addForm.value).subscribe(
-      (response: User) => {
-        sessionStorage.setItem('user', JSON.stringify(response));
-        console.log(response)
-        this.getUsers();
-        this.showMyMessage4= true;
-        this.showMyMessage = false;
-        this.showMyMessage1 = false;
-        this.showMyMessage3 = true;
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message)
-      }
-    )
+     this.user1 =JSON.parse(sessionStorage.getItem('user'));
+    console.log(this.user1);
   }
 
-  public onLogIsnUser(addForm: NgForm): void {
-    // @ts-ignore
-    document.getElementById("loginUser").click();
-    this.userService.login(addForm.value).subscribe(
-      (response: User) => {
-        sessionStorage.setItem('user', JSON.stringify(response));
-        const session = sessionStorage.getItem('userResult');
-        console.log(session)
-        console.log(response)
-        this.getUsers();
-        this.showMyMessage4= true;
-        this.showMyMessage = false;
-        this.showMyMessage1 = false;
-        this.showMyMessage3 = true;
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message)
-      }
-    )
-  }
+
 
   logout() {
     localStorage.removeItem('currentUser');

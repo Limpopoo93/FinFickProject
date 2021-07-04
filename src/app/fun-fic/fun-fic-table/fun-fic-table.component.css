@@ -488,7 +488,7 @@ a:hover
 
 .container
 {
-  margin: 0px auto;
+  margin: auto;
   width: 1200px;
 }
 
@@ -738,7 +738,7 @@ ul.contact li a.icon-rss:before
 .button
 {
   display: inline-block;
-  padding: 1.3em 3em;
+  padding: 1.5em 3em;
   background: #8dc63f;
   -moz-transition: opacity 0.25s ease-in-out;
   -webkit-transition: opacity 0.25s ease-in-out;
@@ -910,7 +910,7 @@ ul.contact li a.icon-rss:before
 #header-featured
 {
   padding: 10em 0em;
-  background-image: url(images/banner.jpg);
+
   background-position: center;
   background-size: cover;
 }
@@ -1038,7 +1038,6 @@ ul.contact li a.icon-rss:before
 
 #copyright
 {
-  margin: auto;
   overflow: hidden;
   padding: 6em 0em 10em 0em;
   border-top: 1px solid rgba(255,255,255,0.08);
@@ -1062,6 +1061,15 @@ ul.contact li a.icon-rss:before
 /*********************************************************************************/
 /* Featured                                                                      */
 /*********************************************************************************/
+
+#featured-wrapper1
+{
+  overflow: hidden;
+  padding: 0em 0em;
+  background: #FFF;
+
+}
+
 
 #featured-wrapper
 {
@@ -1358,17 +1366,571 @@ ul.contact li a.icon-rss:before
 .extra2 .ebox1,
 .extra2 .ebox2
 {
+  padding-top: 40px;
   width: 560px;
 }
 
 .extra2  .ebox1
 {
-
+  display: inline;
   padding-right: 40px;
+  padding-bottom: 40px;
   border-right: 1px solid rgba(0,0,0,.1);
 }
 
 .extra2 .ebox2
 {
 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* line 204, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/theme-default.scss */
+.section-padding {
+  margin: auto;
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+/* line 204, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/theme-default.scss */
+.section-padding {
+  margin: auto;
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+.container {
+
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+
+  margin: auto
+}
+
+@media (min-width: 576px) {
+  .container {
+    margin: auto;
+    max-width: 540px
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    margin: auto;
+    max-width: 720px
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    margin: auto;
+    max-width: 960px
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    margin: auto;
+    max-width: 1540px
+  }
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto
+}
+.container {
+  margin: auto;
+  min-width: 992px !important
+}
+.row {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+
+}
+
+
+.col-8,
+.col-xl-auto {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px
+}
+.col-lg-8 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 66.666667%;
+  flex: 0 0 66.666667%;
+  max-width: 66.666667%
+}
+.single-post-area .blog_details {
+  box-shadow: none;
+  padding: 0;
+}
+.blog_details {
+  padding: 30px 0 20px 10px;
+  box-shadow: 0px 10px 20px 0px rgba(221, 221, 221, 0.3);
+}
+@media (min-width: 768px) {
+  /* line 529, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+  .blog_details {
+    padding: 60px 30px 35px 35px;
+  }
+}
+.single-post-area .blog_details {
+  padding-top: 26px;
+}
+@media (min-width: 768px) {
+  /* line 549, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+  .blog_details h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+}
+
+/* line 563, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.blog-info-link li {
+  float: left;
+  font-size: 14px;
+}
+
+/* line 567, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.blog-info-link li a {
+  color: #999999;
+}
+
+/* line 571, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.blog-info-link li i,
+.blog-info-link li span {
+  font-size: 13px;
+  margin-right: 5px;
+}
+
+/* line 577, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.blog-info-link li::after {
+  content: "|";
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* line 583, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.blog-info-link li:last-child::after {
+  display: none;
+}
+
+/* line 588, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.blog-info-link::after {
+  content: "";
+  display: block;
+  clear: both;
+  display: table;
+}
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale
+}
+.fa-user:before {
+  content: "\f007"
+}
+
+.fa-comments:before {
+  content: "\f086"
+}
+
+@media (max-width: 414px) {
+  /* line 1314, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+  .comments-area {
+    padding: 50px 8px;
+  }
+}
+.comments-area {
+  background: transparent;
+  border-top: 1px solid #eee;
+  padding: 45px 0;
+  margin-top: 50px;
+}
+.comments-area .comment-list {
+  padding-bottom: 48px;
+}
+
+/* line 1344, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.comments-area .comment-list:last-child {
+  padding-bottom: 0px;
+}
+
+/* line 1348, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.comments-area .comment-list.left-padding {
+  padding-left: 25px;
+}
+
+@media (max-width: 413px) {
+  /* line 1354, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+  .comments-area .comment-list .single-comment h5 {
+    font-size: 12px;
+  }
+
+  /* line 1358, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+  .comments-area .comment-list .single-comment .date {
+    font-size: 11px;
+  }
+
+  /* line 1362, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+  .comments-area .comment-list .single-comment .comment {
+    font-size: 10px;
+  }
+}
+.justify-content-between {
+  -webkit-box-pack: justify !important;
+  -ms-flex-pack: justify !important;
+  justify-content: space-between !important
+}
+.d-flex {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important
+}
+.comments-area .thumb {
+  margin-right: 20px;
+}
+.comments-area .thumb img {
+  width: 70px;
+  border-radius: 50%;
+}
+
+/* line 1378, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.comments-area .date {
+  font-size: 14px;
+  color: #999999;
+  margin-bottom: 0;
+  margin-left: 20px;
+}
+
+/* line 1385, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.comments-area .comment {
+  margin-bottom: 10px;
+  color: #777777;
+  font-size: 15px;
+}
+
+/* line 1391, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.comments-area .btn-reply {
+  background-color: transparent;
+  color: #888888;
+  padding: 5px 18px;
+  font-size: 14px;
+  display: block;
+  font-weight: 400;
+}
+
+/* line 1408, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.comment-form {
+  border-top: 1px solid #eee;
+  padding-top: 45px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+/* line 1416, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.comment-form .form-group {
+  margin-bottom: 30px;
+}
+
+/* line 1420, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.comment-form h4 {
+  margin-bottom: 40px;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+/* line 1428, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.comment-form .name {
+  padding-left: 0px;
+}
+
+@media (max-width: 767px) {
+  /* line 1428, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+  .comment-form .name {
+    padding-right: 0px;
+    margin-bottom: 1rem;
+  }
+}
+
+/* line 1437, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.comment-form .email {
+  padding-right: 0px;
+}
+
+@media (max-width: 991px) {
+  /* line 1437, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+  .comment-form .email {
+    padding-left: 0px;
+  }
+}
+
+/* line 1445, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.comment-form .form-control {
+  border: 1px solid #f0e9ff;
+  border-radius: 5px;
+  height: 48px;
+  padding-left: 18px;
+  font-size: 13px;
+  background: transparent;
+}
+
+/* line 1453, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.comment-form .form-control:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+/* line 1458, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.comment-form .form-control::placeholder {
+  font-weight: 300;
+  color: #999999;
+}
+
+/* line 1463, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.comment-form .form-control::placeholder {
+  color: #777777;
+}
+
+/* line 1468, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.comment-form textarea {
+  padding-top: 18px;
+  border-radius: 12px;
+  height: 100% !important;
+}
+
+/* line 1474, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.comment-form ::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  font-size: 13px;
+  color: #777;
+}
+
+/* line 1480, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.comment-form ::-moz-placeholder {
+  /* Firefox 19+ */
+  font-size: 13px;
+  color: #777;
+}
+
+/* line 1486, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.comment-form :-ms-input-placeholder {
+  /* IE 10+ */
+  font-size: 13px;
+  color: #777;
+}
+
+/* line 1492, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.comment-form :-moz-placeholder {
+  /* Firefox 18- */
+  font-size: 13px;
+  color: #777;
+}
+
+@media (max-width: 991px) {
+  /* line 1307, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+  .single-post-area .sidebar-widgets {
+    padding-bottom: 0px;
+  }
+}
+
+/* line 1314, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+
+
+
+/* line 1325, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.comments-area h4 {
+  margin-bottom: 35px;
+  font-size: 18px;
+}
+
+/* line 1332, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.comments-area h5 {
+  font-size: 16px;
+  margin-bottom: 0px;
+}
+
+/* line 1341, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+
+
+/* line 1344, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+
+
+/* line 1348, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+.comments-area .comment-list.left-padding {
+  padding-left: 25px;
+}
+
+@media (max-width: 413px) {
+  /* line 1354, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+  .comments-area .comment-list .single-comment h5 {
+    font-size: 12px;
+  }
+
+  /* line 1358, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+  .comments-area .comment-list .single-comment .date {
+    font-size: 11px;
+  }
+
+  /* line 1362, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_blog.scss */
+  .comments-area .comment-list .single-comment .comment {
+    font-size: 10px;
+  }
+}
+.align-items-center {
+  -webkit-box-align: center !important;
+  -ms-flex-align: center !important;
+  align-items: center !important
+}
+
+.col-lg-12,
+.col-xl-auto {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px
+}
+.col-12 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  max-width: 100%
+}
+.form-contact .form-group {
+  margin-bottom: 30px;
+}
+.form-group {
+  margin-bottom: 1rem
+}
+
+.form-control::-moz-placeholder {
+  color: #6c757d;
+  opacity: 1
+}
+
+.form-control:-ms-input-placeholder {
+  color: #6c757d;
+  opacity: 1
+}
+
+.form-control::-ms-input-placeholder {
+  color: #6c757d;
+  opacity: 1
+}
+
+.form-control::placeholder {
+  color: #6c757d;
+  opacity: 1
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+  background-color: #e9ecef;
+  opacity: 1
+}
+
+select.form-control:not([size]):not([multiple]) {
+  height: calc(2.25rem + 2px)
+}
+
+select.form-control:focus::-ms-value {
+  color: #495057;
+  background-color: #fff
+}
+.form-control {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
+}
+
+.form-control::-ms-expand {
+  background-color: transparent;
+  border: 0
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25)
+}
+
+.form-control::-webkit-input-placeholder {
+  color: #6c757d;
+  opacity: 1
+}
+.form-contact .form-control:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+/* line 74, ../../Arafath/CL/Cl November/225. Restaurant-02/HTML/scss/_contact.scss */
+.form-contact .form-control::placeholder {
+  font-weight: 300;
+  color: #999999;
+}
+
+.form-contact .form-control {
+  border: 1px solid #e5e6e9;
+  border-radius: 0px;
+  height: 48px;
+  padding-left: 18px;
+  font-size: 13px;
+  background: transparent;
+}
+.w-100 {
+  width: 100% !important
+}
+.col-sm-6 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+  max-width: 50%
+}
+
+
+.col-6,
+.col-xl-auto {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px
+}
+
+.mySetting{
+  align-content: center;
+  margin: auto;
 }
