@@ -4,9 +4,10 @@ import {FunFic} from "../model/funFic";
 import {HttpErrorResponse} from "@angular/common/http";
 import {FunFicService} from "../fun-fic/funFic.Service";
 import {Chapter} from "../model/chapter";
-import {FormControl, FormGroup, NgForm} from "@angular/forms";
-import {CommentRequest} from "../model/CommentRequest";
+import {FormBuilder, FormControl, FormGroup, NgForm} from "@angular/forms";
 import {Genre} from "../model/genre";
+import {Tags} from "../model/tags";
+import {Tag} from "@angular/compiler/src/i18n/serializers/xml_helper";
 
 @Component({
   selector: 'app-user',
@@ -32,15 +33,17 @@ export class UserComponent implements OnInit {
   // @ts-ignore
   public chapterList: Chapter[];
   // @ts-ignore
-  public funFic: FunFic;
-  // @ts-ignore
   public user2: User;
-
+  // @ts-ignore
+  public tagList: Tags[];
   // @ts-ignore
   form: FormGroup;
-
   // @ts-ignore
   genre1: string
+
+  // @ts-ignore
+  selectedItem:string[]
+
 
   constructor(private funFicService: FunFicService) {
     this.form = new FormGroup({
@@ -49,6 +52,7 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.selectedItem = new Array<string>()
   }
 
 
@@ -102,17 +106,33 @@ export class UserComponent implements OnInit {
         alert(error.message)
       }
     )
+    this.funFicService.getAllTags().subscribe(
+      (response: Tags[]) => {
+        this.tagList = response;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message)
+      }
+    )
   }
+
   get country(): string {
     // @ts-ignore
     return this.form ? this.form.get('country').value : '';
   }
+
+  // @ts-ignore
+  public onChangeTags($event){
+    const typeTags= $event.target.value;
+    this.selectedItem.push(typeTags);
+  }
+
   public onFunFicPush(addForm: NgForm): void {
     // @ts-ignore
     document.getElementById("clickMessage").click();
     // @ts-ignore
     this.user2 = JSON.parse(sessionStorage.getItem('user'));
-    this.funFicService.addFunFic(addForm.value,  this.genre1= this.country, this.user2.id).subscribe(
+    this.funFicService.addFunFic(addForm.value, this.genre1 = this.country, this.user2.id, this.selectedItem).subscribe(
       (response: FunFic) => {
         console.log(response)
 

@@ -217,6 +217,24 @@
                   </div>
                   </div>
 
+                  <div class= "element2">
+                          <aside class="sidebar">
+                            <aside class='blog-widget-area widget-area'>
+                              <div id="tag_cloud-2" class="widget widget_tag_cloud">
+                                <h6 class="widget_title">Tags</h6>
+                                <div class="tagcloud">
+
+                                  <section>
+                                <a *ngFor="let tags of tagList"><input type="checkbox" class='tag-link-108 tag-link-position-1 a_f795_0 checks'  title='5 topics' name="Custom Code" [value]="tags.typeTags" (change)="onChangeTags($event)" >{{tags.typeTags}}</a>
+                                  </section>
+
+                            </div>
+                              </div>
+                            </aside>
+                          </aside>
+                  </div>
+
+
                 </div>
                 <div class="form-group">
                   <button type="submit" [disabled]="funFicForm.invalid"

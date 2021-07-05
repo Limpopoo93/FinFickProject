@@ -33,6 +33,6 @@ export class UserService{
     return this.http.post<any>(`${this.apiServerUrl}/user/login`, user)
   }
   public getUser(user: User): Observable<User>{
-    return this.http.post<User>(`${this.apiServerUrl}/user//userGetOne`, user);
+    return this.http.post<User>(`${this.apiServerUrl}/user/userGetOne`, user);
   }
 }

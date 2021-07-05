@@ -1,5 +1,3 @@
-import {User} from "./user";
-import {Genre} from "./genre";
 import {Tags} from "./tags";
 
 export interface FunFic {
@@ -11,5 +9,6 @@ export interface FunFic {
   created: Date;
   genre: String;
   tags: Array<Tags>;
+  typeTags: Array<string>;
   idUser: number;
 }
