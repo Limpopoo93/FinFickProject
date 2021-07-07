@@ -1,9 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "./model/user";
-import {UserService} from "./user/user.service";
-import {BehaviorSubject} from "rxjs";
-import {FunFic} from "./model/funFic";
-import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
@@ -16,11 +12,11 @@ export class AppComponent implements OnInit {
   public showMyMessage3 = true;
   public showMyMessage4 = false;
   public showMyMessage6 = false;
-
+  public showMyMessage8 = false;
   // @ts-ignore
   user1: User;
 
-  constructor(private userService: UserService) {
+  constructor() {
   }
 
   ngOnInit() {
@@ -30,6 +26,8 @@ export class AppComponent implements OnInit {
     this.showMyMessage = false;
     this.showMyMessage1 = false;
     this.showMyMessage3 = true;
+    this.showMyMessage8 = false;
+    this.showMyMessage6 = false;
   }
 
 
@@ -42,29 +40,40 @@ export class AppComponent implements OnInit {
 
 
   showMessageSoon() {
-      this.showMyMessage = true;
-      this.showMyMessage1 = false;
-      this.showMyMessage3 = false;
+    this.showMyMessage8 = false;
+    this.showMyMessage6 = false;
+    this.showMyMessage = true;
+    this.showMyMessage1 = false;
+    this.showMyMessage3 = false;
   }
 
   showMessageSoon1() {
-      this.showMyMessage1 = true;
-      this.showMyMessage = false;
-      this.showMyMessage3 = false;
+    this.showMyMessage8 = false;
+    this.showMyMessage6 = false;
+    this.showMyMessage1 = true;
+    this.showMyMessage = false;
+    this.showMyMessage3 = false;
+  }
+
+  showMessageSoon8() {
+    this.showMyMessage1 = false;
+    this.showMyMessage = false;
+    this.showMyMessage3 = false;
+    this.showMyMessage6 = false;
+    this.showMyMessage8 = true;
   }
 
 
-
   showMessageSoon6() {
+    this.showMyMessage8 = false;
     this.showMyMessage1 = false;
     this.showMyMessage = false;
     this.showMyMessage3 = false;
     this.showMyMessage6 = true;
     // @ts-ignore
-     this.user1 =JSON.parse(sessionStorage.getItem('user'));
+    this.user1 = JSON.parse(sessionStorage.getItem('user'));
     console.log(this.user1);
   }
-
 
 
   logout() {

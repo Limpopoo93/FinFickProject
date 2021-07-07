@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import {UserService} from "./user/user.service";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { UserComponent } from './user/user.component';
@@ -12,6 +11,13 @@ import { RegistrationComponent } from './user/registration/registration.componen
 import { FunFicTableComponent } from './fun-fic/fun-fic-table/fun-fic-table.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ChapterComponent } from './chapter/chapter.component';
+import { AdminComponent } from './admin/admin.component';
+import {UserService} from "./service/user.service";
+import {ChapterService} from "./service/chapter.service";
+import {CommentService} from "./service/comment.service";
+import {FunFicService} from "./service/funFic.service";
+import {GenreService} from "./service/genre.service";
+import {TagsService} from "./service/tags.service";
 
 @NgModule({
   declarations: [
@@ -22,6 +28,7 @@ import { ChapterComponent } from './chapter/chapter.component';
     RegistrationComponent,
     FunFicTableComponent,
     ChapterComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +37,7 @@ import { ChapterComponent } from './chapter/chapter.component';
     NgxPaginationModule,
     ReactiveFormsModule
   ],
-  providers: [UserService],
+  providers: [UserService, ChapterService, CommentService, FunFicService, GenreService, TagsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

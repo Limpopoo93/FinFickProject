@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpErrorResponse} from "@angular/common/http";
-import {FunFicService} from "../funFic.Service";
 import {FunFic} from "../../model/funFic";
 import {Chapter} from "../../model/chapter";
 import {CommentRequestDtos} from "../../model/commentDto";
-import {NgForm} from "@angular/forms";
+import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from "@angular/forms";
 import {User} from "../../model/user";
 import {CommentRequest} from "../../model/CommentRequest";
+import { FunFicService } from 'src/app/service/funFic.service';
+import {CommentService} from "../../service/comment.service";
+import {ChapterService} from "../../service/chapter.service";
 
 @Component({
   selector: 'app-fun-fic-table',
@@ -24,13 +26,19 @@ export class FunFicTableComponent implements OnInit {
   public showMyMessage5 = false;
   public totalLength: any;
   public page: number=1;
+  // @ts-ignore
+  addFormComments: FormGroup;
 
-  constructor(private funFicService: FunFicService) {
+  constructor(private funFicService: FunFicService, private commentService: CommentService, private chapterService: ChapterService) {
 
   }
 
   ngOnInit(): void {
     this.getFunFicList();
+    this.addFormComments = new FormGroup({
+      "textComments": new FormControl(null, [Validators.required, Validators.pattern("[^a-zA-Z]"), Validators.minLength(4), Validators.maxLength(50)]),
+      "email": new FormControl(null, [Validators.required, Validators.email, Validators.minLength(4), Validators.maxLength(15)])
+    })
   }
   public getFunFicList(): void {
     this.funFicService.getFunFicList().subscribe(
@@ -46,7 +54,7 @@ export class FunFicTableComponent implements OnInit {
     )
   }
   public getIdChapter(id: number){
-    this.funFicService.getChapterList(id).subscribe(
+    this.chapterService.getChapterList(id).subscribe(
       (response: Chapter[]) => {
         this.chapterList = response;
         console.log(response);
@@ -58,10 +66,10 @@ export class FunFicTableComponent implements OnInit {
       }
     )
   }
-  public onCommentPush(addForm: NgForm, id: number): void {
+  public onCommentPush(addForm: FormGroupDirective, id: number): void {
     // @ts-ignore
     document.getElementById("clickMessage").click();
-    this.funFicService.addComments(addForm.value, id).subscribe(
+    this.commentService.addComments(addForm.value, id).subscribe(
       (response: CommentRequest) => {
         console.log(response)
       },

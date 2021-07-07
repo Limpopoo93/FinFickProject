@@ -7,8 +7,7 @@
       <table>
         <th>
           <ul *ngIf="funFicList">
-            <li
-              *ngFor="let funFiction of funFicList | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalLength }">
+            <li *ngFor="let funFiction of funFicList | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalLength }">
 
               <div class="ebox1"><span class="fa fa-pagelines"></span>
                 <div class="title">
@@ -89,19 +88,21 @@
 
                 <div class="comment-form">
                   <h4>Leave a Reply</h4>
-                  <form class="form-contact comment_form" id="commentForm" #commentForm="ngForm"
+                  <form class="form-contact comment_form" id="commentForm" #commentForm="ngForm" [formGroup]="addFormComments"
                         (ngSubmit)="onCommentPush(commentForm, chapter.id)">
                     <div class="row">
                       <div class="col-12">
                         <div class="form-group">
                               <textarea class="form-control w-100" ngModel name="textComments" id="textComments"
                                         cols="30" rows="9"
-                                        placeholder="Write Comment"></textarea>
+                                        placeholder="Write Comment" formControlName="textComments"></textarea>
+                          <span *ngIf="addFormComments.get('textComments')?.invalid && addFormComments.get('textComments')?.touched"  class="error"><h1>textComments is not valid</h1></span>
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <input class="form-control" ngModel name="email" id="email" type="text" placeholder="Email">
+                          <input class="form-control" ngModel name="email" id="email" type="text" placeholder="Email" formControlName="email">
+                          <span *ngIf="addFormComments.get('email')?.invalid && addFormComments.get('email')?.touched"  class="error"><h1>email is not valid</h1></span>
                         </div>
                       </div>
                     </div>

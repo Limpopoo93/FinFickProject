@@ -1,4 +1,3 @@
-import {FunFic} from "./funFic";
 import {CommentRequestDtos} from "./commentDto";
 
 export interface Chapter {
@@ -6,5 +5,6 @@ export interface Chapter {
   numberChapter: number;
   nameChapter: string;
   textChapter: string;
+  idFunFic: number;
   commentDto: Array<CommentRequestDtos>
 }

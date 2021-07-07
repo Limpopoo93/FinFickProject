@@ -11,7 +11,7 @@
   margin-left: 30%;
 }
 .row1{
-  padding-right: 80px;
+
   display: table;
   margin-left: 10%;
 
@@ -1271,8 +1271,38 @@ ul.contact li a.icon-rss:before
 /* Button Style                                                                  */
 /*********************************************************************************/
 
+.button11
+{
+  margin-top: 30%;
+  width: 80px;
+  height: 35px;
+  display: inline-block;
+  padding: 1.5em 3em;
+  background: #8dc63f;
+  -moz-transition: opacity 0.25s ease-in-out;
+  -webkit-transition: opacity 0.25s ease-in-out;
+  -o-transition: opacity 0.25s ease-in-out;
+  -ms-transition: opacity 0.25s ease-in-out;
+  transition: opacity 0.25s ease-in-out;
+  letter-spacing: 0.20em;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #FFF;
+}
+
+.button11:hover
+{
+  background: #86bd3b;
+}
+
+.button11:active
+{
+}
+
 .button
 {
+  margin:auto;
   display: inline-block;
   padding: 1.5em 3em;
   background: #8dc63f;
@@ -2453,7 +2483,7 @@ select.form-control:focus::-ms-value {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 50%;
   flex: 0 0 50%;
-  max-width: 50%
+
 }
 
 

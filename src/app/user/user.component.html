@@ -1,251 +1,246 @@
 <div id="featured-wrapper1">
-  <div id="preloaderKDZ"></div>
-  <div class="yolo-site">
-    <div id="example-wrapper">
-      <div class="div-box mb mt">
-        <div class="container">
-          <div class="form-customers">
-            <h2 class="title-style title-style-1 mb-45 text-center"><span class="title-left">Our </span><span
-              class="title-right">Services</span></h2>
-            <div class="row1">
-              <div class="col-md-3 col-sm-6 row23">
-                <div class="style_4 icon-box-shortcode-wrap">
-                  <div class="icon-box-container">
-                    <div class="icon-wrap">
-                      <div class="icon-main bg-base"><span class="fa fa-leaf color-fff"></span></div>
-                    </div>
-                    <div class="icon-content">
-                      <div class="icon-title">Upgrade</div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-6 row23">
-                <div class="style_4 icon-box-shortcode-wrap">
-                  <div class="icon-box-container">
-                    <div class="icon-wrap">
-                      <div class="icon-main bg-base"><span class="fa fa-leaf color-fff"></span></div>
-                    </div>
-
-                    <div class="icon-content">
-                      <div class="icon-title">
-                        <a (click)="getUserListFunficId()" class="button">Fun Fic</a></div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-6 row23">
-              <div class="style_4 icon-box-shortcode-wrap">
-                <div class="icon-box-container">
-                  <div class="icon-wrap">
-                    <div class="icon-main bg-base"><span class="fa fa-leaf color-fff"></span></div>
-                  </div>
-                  <div class="icon-content">
-                    <div class="icon-title">Updated info</div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-6 row23">
-              <div class="style_4 icon-box-shortcode-wrap">
-                <div class="icon-box-container">
-                  <div class="icon-wrap">
-                    <div class="icon-main bg-base"><span class="fa fa-leaf color-fff"></span></div>
-                  </div>
-                  <div class="icon-content">
-                    <div class="icon-title">Мои закладки</div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div *ngIf="showMyMessage7">
-          <form class="checkout">
-            <h3 id="order_review_heading">Your information</h3>
-            <div id="order_review" class="product-begreen-checkout-review-order">
-              <table class="shop_table product-begreen-checkout-review-order-table tableUserr">
-                <tbody>
-                <tr class="cart_item">
-                  <td class="product-name"><strong class="product-quantity">Login</strong></td>
-                  <td class="product-total"><span class="product-begreen-price-amount amount"><span
-                    class="product-begreen-price-currencysymbol"></span>{{user.login}}</span></td>
-                </tr>
-                <tr class="cart_item">
-                  <td class="product-name"><strong class="product-quantity">Name</strong></td>
-                  <td class="product-total"><span class="product-begreen-price-amount amount"><span
-                    class="product-begreen-price-currencysymbol"></span>{{user.nameUser}}</span></td>
-                </tr>
-                </tbody>
-                <tr class="cart_item">
-                  <td class="product-name"><strong class="product-quantity">Surname</strong></td>
-                  <td class="product-total"><span class="product-begreen-price-amount amount"><span
-                    class="product-begreen-price-currencysymbol"></span>{{user.surnameUser}}</span></td>
-                </tr>
-                <tr class="cart_item">
-                  <td class="product-name"><strong class="product-quantity">Email</strong></td>
-                  <td class="product-total"><span class="product-begreen-price-amount amount"><span
-                    class="product-begreen-price-currencysymbol"></span>{{user.email}}</span></td>
-                </tr>
-                <tr class="cart_item">
-                  <td class="product-name"><strong class="product-quantity">Status</strong></td>
-                  <td class="product-total"><span class="product-begreen-price-amount amount"><span
-                    class="product-begreen-price-currencysymbol"></span>{{user.status}}</span></td>
-                </tr>
-              </table>
-            </div>
-          </form>
-        </div>
-
-        <div>
-          <div id="wrapper" *ngIf="showMyMessage8">
-            <div id="featured-wrapper">
-              <div id="featured" class="extra2 margin-btm container">
-                <div class="main-title">
-                  <h2>Our best products</h2>
-                  <span class="byline"></span></div>
-                <table>
-                  <th>
-                    <ul *ngIf="funFicList">
-                      <li
-                        *ngFor="let funFiction of funFicList | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalLength }">
-
-                        <div class="ebox1"><span class="fa fa-pagelines"></span>
-                          <div class="title">
-                            <h2>Name: {{funFiction.nameFun}}</h2>
-                            <div *ngFor="let tags of funFiction.tags">
-                              <span class="byline">Tags: {{tags.typeTags}}</span></div>
-                          </div>
-                          <p>Description: {{funFiction.shortDescription}}</p>
-                          <p>Genre: {{funFiction.genre}}</p>
-                          <a (click)="getIdChapter(funFiction.id)" class="button">Read Chapter</a>
-                          <a (click)="deleteFunFicId(funFiction.id)" class="button">Delete Fun Fic</a>
-                          <a (click)="getIdChapter(funFiction.id)" class="button">Updated Fun Fic</a>
-                          <a (click)="showFunFicForm()" class="button">Add Fun Fic</a></div>
-                      </li>
-                    </ul>
-                    <pagination-controls (pageChange)="page = $event"></pagination-controls>
-                  </th>
+  <div class="wrapper my-account">
+    <div class="idea-area  ptb-80">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-4 col-xs-12">
+            <div class="idea-tab-menu">
+              <ul class="nav idea-tab" role="tablist">
+                <table style="margin: auto">
+                  <tr>
+                    <th>   <li role="presentation"><a class="button" aria-controls="design" role="tab" data-toggle="tab"
+                                                      (click)="getUserListFunficId()">FunFic List</a></li></th>
+                    <th> <li role="presentation"><a class="button" aria-controls="devlopment" role="tab" data-toggle="tab">Updated
+                      info</a></li></th>
+                    <th> <li role="presentation"><a class="button" aria-controls="devlopment" role="tab" data-toggle="tab">Мои
+                      закладки</a></li></th>
+                  </tr>
                 </table>
-              </div>
-            </div>
-          </div>
-
-
-          <div *ngIf="showMyMessage9">
-            <ul *ngIf="chapterList">
-              <li *ngFor="let chapter of chapterList">
-
-                  <section class="blog_area single-post-area section-padding mySetting">
-                    <div class="container">
-                      <div class="row">
-                        <div class="col-lg-8 posts-list">
-                          <div class="single-post">
-                            <div class="blog_details">
-
-                              <h2>
-                                Chapter №{{chapter.numberChapter}}
-                              </h2>
-                              <h2>{{chapter.nameChapter}}
-                              </h2>
-                              <ul class="blog-info-link mt-3 mb-4">
-                                <li><i class="fa fa-user"></i> Кол-во лайков</li>
-                                <li><a href="#"><i class="fa fa-comments"></i>Comments</a></li>
-                              </ul>
-                              <ul class="blog-info-link mt-3 mb-4">
-                              </ul>
-                              <p class="excert">
-                                {{chapter.textChapter}}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </section>
-              </li>
-            </ul>
-          </div>
-
-
-
-
-
-
-          <div *ngIf="showMyMessage10">
-
-            <div class="comment-form">
-              <h4>Add Fun Fic</h4>
-              <form class="form-contact comment_form" id="commentForm" #funFicForm="ngForm"
-                    (ngSubmit)="onFunFicPush(funFicForm)">
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <input class="form-control" ngModel name="nameFun" id="nameFun" type="text" placeholder="nameFunFic">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-12">
-                    <div class="form-group">
-                              <textarea class="form-control w-100" ngModel name="shortDescription" id="shortDescription"
-                                        cols="30" rows="9"
-                                        placeholder="shortDescription"></textarea>
-                    </div>
-                  </div>
-
-                  <div class="col-sm-6">
-                  <div class="form-group">
-                    <div class="form-control">
-                  <div class="col-sm-6">
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                      <div class="input-box mb-20">
-                        <form [formGroup]="form">
-                        <label>Genre <em></em></label>
-                        <select formControlName="country" class="selectpicker select-custom" data-live-search="true">
-                          <option *ngFor="let genre of genreList" [ngValue]="genre.typeGenre" >{{genre.typeGenre}}</option>
-                        </select>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                    </div>
-                  </div>
-                  </div>
-
-                  <div class= "element2">
-                          <aside class="sidebar">
-                            <aside class='blog-widget-area widget-area'>
-                              <div id="tag_cloud-2" class="widget widget_tag_cloud">
-                                <h6 class="widget_title">Tags</h6>
-                                <div class="tagcloud">
-
-                                  <section>
-                                <a *ngFor="let tags of tagList"><input type="checkbox" class='tag-link-108 tag-link-position-1 a_f795_0 checks'  title='5 topics' name="Custom Code" [value]="tags.typeTags" (change)="onChangeTags($event)" >{{tags.typeTags}}</a>
-                                  </section>
-
-                            </div>
-                              </div>
-                            </aside>
-                          </aside>
-                  </div>
-
-
-                </div>
-                <div class="form-group">
-                  <button type="submit" [disabled]="funFicForm.invalid"
-                          class="button button-contactForm btn_1 boxed-btn" id="clickMessage">Add Fun Fic
-                  </button>
-                </div>
-              </form>
+              </ul>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <div *ngIf="showMyMessage7">
+    <div class="wrapper my-account">
+      <div class="idea-area  ptb-80">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-sm-8 col-xs-12">
+              <div class="idea-tab-content">
+                <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane fade in" id="devlopment">
+                    <form action="#" method="post">
+                      <div class="table-responsive">
+                        <table class="checkout-area table text-center">
+                          <tr>
+                            <th>Login</th>
+                            <th>Password</th>
+                            <th>Email</th>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>Background</th>
+                            <th>Language</th>
+                            <th>Status</th>
+                          </tr>
+                          <tr>
+                            <th>{{user.login}}</th>
+                            <th>{{user.password}}</th>
+                            <th>{{user.email}}</th>
+                            <th>{{user.nameUser}}</th>
+                            <th>{{user.surnameUser}}</th>
+                            <th>{{user.background}}</th>
+                            <th>{{user.language}}</th>
+                            <th>{{user.status}}</th>
+                          </tr>
+                        </table>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="wrapper" *ngIf="showMyMessage8">
+    <div id="featured-wrapper">
+      <div id="featured" class="extra2 margin-btm container">
+        <div class="main-title">
+          <h2>Our best products</h2>
+          <span class="byline"></span>
+        </div>
+        <table>
+          <th>
+            <ul *ngIf="funFicList">
+              <li
+                *ngFor="let funFiction of funFicList | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalLength }">
+
+                <div class="ebox1"><span class="fa fa-pagelines"></span>
+                  <div class="title">
+                    <h2>Name: {{funFiction.nameFun}}</h2>
+                    <div *ngFor="let tags of funFiction.tags">
+                      <span class="byline">Tags: {{tags.typeTags}}</span>
+                    </div>
+                  </div>
+                  <p>Description: {{funFiction.shortDescription}}</p>
+                  <p>Genre: {{funFiction.genre}}</p>
+                  <a (click)="getIdChapter(funFiction.id)" class="button">Read Chapter</a>
+                  <a (click)="deleteFunFicId(funFiction.id)" class="button">Delete Fun Fic</a>
+                  <a (click)="getIdChapter(funFiction.id)" class="button">Updated Fun Fic</a>
+                  <a (click)="showFunFicForm()" class="button">Add Fun Fic</a>
+                </div>
+              </li>
+            </ul>
+            <pagination-controls (pageChange)="page = $event"></pagination-controls>
+          </th>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showMyMessage9">
+    <ul *ngIf="chapterList">
+      <li *ngFor="let chapter of chapterList">
+        <section class="blog_area single-post-area section-padding mySetting">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 posts-list">
+                <div class="single-post">
+                  <div class="blog_details">
+                    <h2>
+                      Chapter №{{chapter.numberChapter}}
+                    </h2>
+                    <h2>{{chapter.nameChapter}}
+                    </h2>
+                    <ul class="blog-info-link mt-3 mb-4">
+                      <li><i class="fa fa-user"></i> Кол-во лайков</li>
+                      <li><a href="#"><i class="fa fa-comments"></i>Comments</a></li>
+                    </ul>
+                    <ul class="blog-info-link mt-3 mb-4">
+                    </ul>
+                    <p class="excert">
+                      {{chapter.textChapter}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </li>
+    </ul>
+  </div>
+
+
+  <div *ngIf="showMyMessage10">
+    <div class="comment-form">
+      <h4>Add Fun Fic</h4>
+      <form class="form-contact comment_form" id="commentForm" #funFicForm="ngForm" [formGroup]="addFunFicForm"
+            (ngSubmit)="onFunFicPush(funFicForm)">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <input class="form-control" ngModel name="nameFun" id="nameFun" type="text" placeholder="nameFunFic" formControlName="nameFunFic">
+            <span *ngIf="addFunFicForm.get('nameFunFic')?.invalid && addFunFicForm.get('nameFunFic')?.touched"  class="error"><h1>nameFunFic is not valid</h1></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <textarea class="form-control w-100" ngModel name="shortDescription" id="shortDescription" cols="30"
+                        rows="9" placeholder="shortDescription" formControlName="shortDescription">
+              </textarea>
+              <span *ngIf="addFunFicForm.get('shortDescription')?.invalid && addFunFicForm.get('shortDescription')?.touched"  class="error"><h1>shortDescription is not valid</h1></span>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <div class="form-control">
+                <div class="col-sm-6">
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="input-box mb-20">
+                      <form [formGroup]="form">
+                        <label>Genre <em></em></label>
+                        <select formControlName="country" class="selectpicker select-custom" data-live-search="true">
+                          <option *ngFor="let genre of genreList"
+                                  [ngValue]="genre.typeGenre">{{genre.typeGenre}}</option>
+                        </select>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="element2">
+            <aside class="sidebar">
+              <aside class='blog-widget-area widget-area'>
+                <div id="tag_cloud-2" class="widget widget_tag_cloud">
+                  <h6 class="widget_title">Tags</h6>
+                  <div class="tagcloud">
+                    <section>
+                      <a *ngFor="let tags of tagList"><input type="checkbox"
+                                                             class='tag-link-108 tag-link-position-1 a_f795_0 checks'
+                                                             title='5 topics' name="Custom Code" [value]="tags.typeTags"
+                                                             (change)="onChangeTags($event)">{{tags.typeTags}}
+                      </a>
+                    </section>
+                  </div>
+                </div>
+              </aside>
+            </aside>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <button type="submit" [disabled]="funFicForm.invalid" class="button button-contactForm btn_1 boxed-btn"
+                  id="clickMessage">Add Fun Fic
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div *ngIf="showMyMessage11">
+
+    <div class="comment-form">
+      <h4>Add Fun Fic</h4>
+      <form class="form-contact comment_form" id="chapterForm" #funFicForm="ngForm" [formGroup]="addChapterForm"
+            (ngSubmit)="addChapterPush(funFicForm)">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <input class="form-control" ngModel name="numberChapter" id="numberChapter" type="text"
+                   placeholder="numberChapter" formControlName="numberChapter">
+            <span *ngIf="addChapterForm.get('numberChapter')?.invalid && addChapterForm.get('numberChapter')?.touched"  class="error"><h1>numberChapter is not valid</h1></span>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <input class="form-control" ngModel name="nameChapter" id="nameChapter" type="text"
+                   placeholder="nameChapter" formControlName="nameChapter">
+            <span *ngIf="addChapterForm.get('nameChapter')?.invalid && addChapterForm.get('nameChapter')?.touched"  class="error"><h1>nameChapter is not valid</h1></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+                              <textarea class="form-control w-100" ngModel name="textChapter" id="textChapter"
+                                        cols="30" rows="9"
+                                        placeholder="textChapter" formControlName="textChapter"></textarea>
+            </div>
+            <span *ngIf="addChapterForm.get('textChapter')?.invalid && addChapterForm.get('textChapter')?.touched"  class="error"><h1>textChapter is not valid</h1></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" [disabled]="funFicForm.invalid"
+                  class="button button-contactForm btn_1 boxed-btn" id="clickAddChapter">Add chapter
+          </button>
+        </div>
+      </form>
+    </div>
 </div>

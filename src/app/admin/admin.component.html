@@ -1,0 +1,178 @@
+<div id="featured-wrapper1">
+<div class="wrapper my-account">
+  <div class="idea-area  ptb-80">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-4 col-xs-12">
+          <div class="idea-tab-menu">
+            <ul class="nav idea-tab" role="tablist">
+
+              <li role="presentation"><a class="button"  aria-controls="design" role="tab" data-toggle="tab" (click)="showMessageSoon1()">Add Fun Fic</a></li>
+              <li role="presentation"><a class="button"  aria-controls="devlopment" role="tab" data-toggle="tab" (click)="showMessageSoon2()">List User</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-9 col-sm-8 col-xs-12">
+          <div class="idea-tab-content">
+            <div class="tab-content">
+              <div *ngIf="showMyMessage1">
+              <div role="tabpanel" class="tab-pane fade in" id="design">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <div class="input-box mb-20">
+                    <label>First Name <em>*</em></label>
+                    <input type="text" name="namm" class="info" placeholder="First Name">
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <div class="input-box mb-20">
+                    <label>Last Name<em>*</em></label>
+                    <input type="text" name="namm" class="info" placeholder="Last Name">
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <div class="input-box mb-20">
+                    <label>Email Address<em>*</em></label>
+                    <input type="email" name="email" class="info" placeholder="Your Email">
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <div class="input-box mb-20">
+                    <label>Phone Number<em>*</em></label>
+                    <input type="text" name="phone" class="info" placeholder="Phone Number">
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <div class="input-box mb-20">
+                    <label>Country <em>*</em></label>
+                    <select class="selectpicker select-custom" data-live-search="true">
+                      <option data-tokens="Bangladesh">Bangladesh</option>
+                      <option data-tokens="India">India</option>
+                      <option data-tokens="Pakistan">Pakistan</option>
+                      <option data-tokens="Pakistan">Pakistan</option>
+                      <option data-tokens="Srilanka">Srilanka</option>
+                      <option data-tokens="Nepal">Nepal</option>
+                      <option data-tokens="Butan">Butan</option>
+                      <option data-tokens="USA">USA</option>
+                      <option data-tokens="England">England</option>
+                      <option data-tokens="Brazil">Brazil</option>
+                      <option data-tokens="Canada">Canada</option>
+                      <option data-tokens="China">China</option>
+                      <option data-tokens="Koeria">Koeria</option>
+                      <option data-tokens="Soudi">Soudi Arabia</option>
+                      <option data-tokens="Spain">Spain</option>
+                      <option data-tokens="France">France</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <div class="input-box mb-20">
+                    <label>Town/City <em>*</em></label>
+                    <input type="text" name="add1" class="info" placeholder="Town/City">
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <div class="input-box mb-20">
+                    <label>State/Divison <em>*</em></label>
+                    <select class="selectpicker select-custom" data-live-search="true">
+                      <option data-tokens="Barisal">Barisal</option>
+                      <option data-tokens="Dhaka">Dhaka</option>
+                      <option data-tokens="Kulna">Kulna</option>
+                      <option data-tokens="Rajshahi">Rajshahi</option>
+                      <option data-tokens="Sylet">Sylet</option>
+                      <option data-tokens="Chittagong">Chittagong</option>
+                      <option data-tokens="Rangpur">Rangpur</option>
+                      <option data-tokens="Maymanshing">Maymanshing</option>
+                      <option data-tokens="Cox">Cox's Bazar</option>
+                      <option data-tokens="Saint">Saint Martin</option>
+                      <option data-tokens="Kuakata">Kuakata</option>
+                      <option data-tokens="Sajeq">Sajeq</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <div class="input-box mb-20">
+                    <label>Post Code/Zip Code<em>*</em></label>
+                    <input type="text" name="zipcode" class="info" placeholder="Zip Code">
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="input-box mb-20">
+                    <label>Address <em>*</em></label>
+                    <input type="text" name="add1" class="info mb-10" placeholder="Street Address">
+                    <input type="text" name="add2" class="info mt10" placeholder="Apartment, suite, unit etc. (optional)">
+                  </div>
+                </div>
+                <div class="col-xs-12 text-right">
+                  <a class="btn-def btn2" href="#">Save</a>
+                </div>
+              </div>
+              </div>
+
+              <div *ngIf="showMyMessage2">
+              <div role="tabpanel" class="tab-pane fade in" id="devlopment">
+                <form action="#" method="post">
+                  <div class="table-responsive">
+                    <table class="checkout-area table text-center">
+                      <ul *ngIf="userList">
+                        <li *ngFor="let user of userList | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalLength }">
+                      <tr></tr>
+                      <tr class="cart_item check-heading">
+                        <td class="ctg-type">Login: {{user.login}}</td>
+                        <td class="cgt-des">Password: {{user.password}}</td>
+                        <td class="ctg-type">Email: {{user.email}}</td>
+                        <td class="cgt-des">Name: {{user.nameUser}}</td>
+                        <td class="ctg-type">Surname: {{user.surnameUser}}</td>
+                        <td class="cgt-des">Background: {{user.background}}</td>
+                        <td class="ctg-type">Language: {{user.language}}</td>
+                        <td class="cgt-des">Status: {{user.status}}</td>
+                      </tr>
+                          <div class="icon-content">
+                              <a class="button" (click)="deleteUser(user.id)">Delete</a>
+                              <a class="button" (click)="blockUser(user.id)">Block</a>
+                              <a class="button" (click)="setAdminUser(user.id)">Set Admin</a>
+                            <a class="button" (click)="getAllFunFic(user.id)">open user Fun fic</a>
+                          </div>
+                        </li>
+                      </ul>
+                      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+                    </table>
+                  </div>
+                </form>
+              </div>
+              </div>
+
+              <div *ngIf="showMyMessage3">
+                <div role="tabpanel" class="tab-pane fade in" id="devlopment">
+                  <form action="#" method="post">
+                    <div class="table-responsive">
+                      <table class="checkout-area table text-center">
+                        <ul *ngIf="funFicList">
+                          <li *ngFor="let funFic of funFicList | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalLength }">
+                            <tr></tr>
+                            <tr class="cart_item check-heading">
+                              <td class="ctg-type">NameFunFIc: {{funFic.nameFun}}</td>
+                              <td class="cgt-des">Description: {{funFic.shortDescription}}</td>
+                              <td class="ctg-type">Rating: {{funFic.rating}}</td>
+                              <td class="cgt-des">Like: {{funFic.like}}</td>
+                              <td class="ctg-type">Created: {{funFic.created}}</td>
+                              <td class="cgt-des">Genre: {{funFic.genre}}</td>
+                            </tr>
+                          </li>
+                        </ul>
+                        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+                      </table>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</div>
