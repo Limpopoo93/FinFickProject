@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'https://funficrestapi.herokuapp.com/'
+  apiBaseUrl: 'https://funficrestapi.herokuapp.com'
 
 };
 
