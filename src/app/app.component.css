@@ -13,12 +13,6 @@
   font-weight: normal;
   font-style: normal;
 }
-/*********************************************************************************/
-/* Icons                                                                         */
-/* Powered by Font Awesome by Dave Gandy | http://fontawesome.io                 */
-/* Licensed under the SIL OFL 1.1 (font), MIT (CSS)                              */
-/*********************************************************************************/
-
 .fa
 {
   text-decoration: none;
@@ -492,10 +486,6 @@ a:hover
   width: 1200px;
 }
 
-/*********************************************************************************/
-/* Image Style                                                                   */
-/*********************************************************************************/
-
 .image
 {
   display: inline-block;
@@ -531,10 +521,6 @@ a:hover
   margin: 0 auto;
   width: auto;
 }
-
-/*********************************************************************************/
-/* List Styles                                                                   */
-/*********************************************************************************/
 
 ul.style1
 {
@@ -664,10 +650,6 @@ ul.style3 .icon
   color: #DB3256;
 }
 
-/*********************************************************************************/
-/* Social Icon Styles                                                            */
-/*********************************************************************************/
-
 ul.contact
 {
   margin: 0;
@@ -731,10 +713,6 @@ ul.contact li a.icon-rss:before
   background: #F2600B;
 }
 
-/*********************************************************************************/
-/* Button Style                                                                  */
-/*********************************************************************************/
-
 .button
 {
   display: inline-block;
@@ -768,10 +746,6 @@ ul.contact li a.icon-rss:before
   font-weight: 900;
 }
 
-/*********************************************************************************/
-/* Heading Titles                                                                */
-/*********************************************************************************/
-
 .title
 {
   margin-bottom: 3em;
@@ -793,10 +767,6 @@ ul.contact li a.icon-rss:before
   color: #6F6F6F;
 }
 
-/*********************************************************************************/
-/* Header                                                                        */
-/*********************************************************************************/
-
 #header-wrapper
 {
   background: #2b2b2b;
@@ -807,10 +777,6 @@ ul.contact li a.icon-rss:before
   position: relative;
   height: 100px;
 }
-
-/*********************************************************************************/
-/* Logo                                                                          */
-/*********************************************************************************/
 
 #logo
 {
@@ -857,10 +823,6 @@ ul.contact li a.icon-rss:before
   padding-right: 2em;
 }
 
-/*********************************************************************************/
-/* Menu                                                                          */
-/*********************************************************************************/
-
 #menu
 {
   position: absolute;
@@ -902,15 +864,11 @@ ul.contact li a.icon-rss:before
   color: #8dc63f;
 }
 
-/*********************************************************************************/
-/* Banner                                                                        */
-/*********************************************************************************/
-
 
 #header-featured
 {
   padding: 10em 0em;
-  background-image: url(images/banner.jpg);
+  background-image: url(https://1.downloader.disk.yandex.by/preview/d803dea80b603bd83f5f086092f270d9611f03db4c44eddc03f61a181b2d39ba/inf/a-ai0nhoFw6EI5gwRoXTSen4dY5qUZZsEX5tztfGIj0Mq1ttDF7eRv7Afcg6529qCr3UuLaU0gdY9H_OWvgi1w%3D%3D?uid=166599997&filename=banner.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=166599997&tknv=v2&size=1903x947);
   background-position: center;
   background-size: cover;
 }
@@ -1371,4 +1329,63 @@ ul.contact li a.icon-rss:before
 .extra2 .ebox2
 {
 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+form {
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+}
+.d1 {background: #A3D0C3;}
+.d1 input {
+  width: 100%;
+  height: 42px;
+  padding-left: 10px;
+  border: 2px solid #7BA7AB;
+  border-radius: 5px;
+  outline: none;
+  background: #F9F0DA;
+  color: #9E9C9C;
+}
+.d1 button {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  width: 42px;
+  height: 42px;
+  border: none;
+  background: #7BA7AB;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+.d1 button:before {
+  content: "\f002";
+  font-family: FontAwesome;
+  font-size: 16px;
+  color: #F9F0DA;
 }

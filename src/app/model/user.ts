@@ -1,3 +1,5 @@
+import {Role} from "./role";
+
 export interface User {
   id: number;
   login: string;
@@ -8,4 +10,8 @@ export interface User {
   background: string;
   language: string;
   status: string;
+  idChapter: number;
+  rating: number;
+  roles: string[];
+  like: number;
 }

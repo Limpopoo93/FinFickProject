@@ -15,7 +15,9 @@ export class LoginComponent implements OnInit {
   // @ts-ignore
   public user: User;
   // @ts-ignore
-  singInForm: FormGroup;
+  public singInForm: FormGroup;
+  // @ts-ignore
+  public result: string;
 
   @Output()
   onShowElementIn = new EventEmitter();
@@ -23,8 +25,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.singInForm = new FormGroup({
-      "login": new FormControl(null, [Validators.required, Validators.pattern("[^a-zA-Z0-9]"), Validators.minLength(4), Validators.maxLength(15)]),
-      "password": new FormControl(null, [Validators.required, Validators.pattern("[^a-zA-Z0-9]"), Validators.minLength(4), Validators.maxLength(15)])
+      "login": new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(15)]),
+      "password": new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(15)])
     })
   }
 
@@ -39,7 +41,7 @@ export class LoginComponent implements OnInit {
 
       },
       (error: HttpErrorResponse) => {
-        alert(error.message)
+        this.result = error.message;
       }
     )
   }

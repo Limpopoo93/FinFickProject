@@ -11,4 +11,5 @@ export interface FunFic {
   tags: Array<Tags>;
   typeTags: Array<string>;
   idUser: number;
+  emailUser: string;
 }

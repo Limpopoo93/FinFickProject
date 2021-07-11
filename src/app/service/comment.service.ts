@@ -4,6 +4,8 @@ import {Observable} from "rxjs";
 import {User} from "../model/user";
 import {environment} from "../../environments/environment";
 import {CommentRequest} from "../model/CommentRequest";
+import {FunFic} from "../model/funFic";
+import {Chapter} from "../model/chapter";
 
 @Injectable({
   providedIn: 'root'
@@ -18,4 +20,5 @@ export class CommentService{
     comment.idChapter = id;
     return this.http.post<CommentRequest>(`${this.apiServerUrl}/user/commentSave`, comment);
   }
+
 }

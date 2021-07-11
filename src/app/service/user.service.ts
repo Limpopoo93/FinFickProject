@@ -19,22 +19,15 @@ export class UserService{
   public addUser(user: User): Observable<User>{
     return this.http.post<User>(`${this.apiServerUrl}/user/save`, user);
   }
-  public updateUser(user: User): Observable<User>{
-    return this.http.put<User>(`${this.apiServerUrl}/user/updateUser`, user);
-  }
   public deleteUser(userId: number): Observable<User[]>{
     return this.http.delete<User[]>(`${this.apiServerUrl}/admin/deleteUserByAdmin/${userId}`);
   }
   public login(user: User){
     return this.http.post<any>(`${this.apiServerUrl}/user/login`, user)
   }
-  public getUser(user: User): Observable<User>{
-    return this.http.post<User>(`${this.apiServerUrl}/user/userGetOne`, user);
-  }
   public blockUser(userId: number): Observable<User[]>{
     return this.http.get<User[]>(`${this.apiServerUrl}/admin/blockUserByAdmin/${userId}`);
   }
-
   public setAdminUser(userId: number): Observable<User>{
     return this.http.get<User>(`${this.apiServerUrl}/admin/updatedUserByAdmin/${userId}`);
   }

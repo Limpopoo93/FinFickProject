@@ -6,5 +6,9 @@ export interface Chapter {
   nameChapter: string;
   textChapter: string;
   idFunFic: number;
-  commentDto: Array<CommentRequestDtos>
+  commentDto: Array<CommentRequestDtos>;
+  emailUser: string
+  like: number;
+  rating: number;
+  idUser: number;
 }

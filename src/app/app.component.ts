@@ -1,5 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {User} from "./model/user";
+import {FormGroup, FormGroupDirective, NgForm} from "@angular/forms";
+import {HttpErrorResponse} from "@angular/common/http";
+import {FunFicService} from "./service/funFic.service";
+import {FunFic} from "./model/funFic";
 
 @Component({
   selector: 'app-root',
@@ -7,69 +11,121 @@ import {User} from "./model/user";
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  public showMyMessage = false;
-  public showMyMessage1 = false;
-  public showMyMessage3 = true;
-  public showMyMessage4 = false;
-  public showMyMessage6 = false;
-  public showMyMessage8 = false;
+  public showSingInForm = false;
+  public showSingUpForm = false;
+  public showFunFicTable = true;
+  public showFunction = false;
+  public showSettingUser = false;
+  public showAdminPage = false;
+  public reverseForm = true;
+  public showAdminFunction = false;
+  public addFunFicFormUser = false;
+  public showAddChapterEmailUser = false;
+  public searchFunFic = false;
   // @ts-ignore
-  user1: User;
-
-  constructor() {
+  public user1: User;
+  // @ts-ignore
+  public addChapterForm: FormGroup;
+  // @ts-ignore
+  public result:String;
+  // @ts-ignore
+  public funFic: string;
+  @Output()
+  funFicSelected = new EventEmitter();
+  // @ts-ignore
+  funFicResultSearch:FunFic[]
+  // @ts-ignore
+  public showFunFic;
+  constructor(private funFicService: FunFicService) {
   }
 
   ngOnInit() {
   }
 
-  showMessageSoon2() {
-    this.showMyMessage = false;
-    this.showMyMessage1 = false;
-    this.showMyMessage3 = true;
-    this.showMyMessage8 = false;
-    this.showMyMessage6 = false;
+  showStartListPage() {
+    this.showSingInForm = false;
+    this.showSingUpForm = false;
+    this.showFunFicTable = true;
+    this.showAdminPage = false;
+    this.showSettingUser = false;
+    this.addFunFicFormUser = false
+    this.showAddChapterEmailUser = false;
+    this.searchFunFic = false;
   }
 
 
-  showMessageSoon7() {
-    this.showMyMessage = false;
-    this.showMyMessage1 = false;
-    this.showMyMessage3 = true;
-    this.showMyMessage4 = true;
+  singInFormReverse() {
+    this.showSingInForm = false;
+    this.showSingUpForm = false;
+    this.showFunFicTable = true;
+    this.showFunction = true;
+    this.reverseForm = false;
+    this.addFunFicFormUser = false
+    this.showAddChapterEmailUser = false;
+    this.searchFunFic = false;
+    // @ts-ignore
+    let user = JSON.parse(sessionStorage.getItem('user'))
+    for (let i = 0; i <= user.roles.length; i++) {
+      if (user.roles[i] == "ROLE_ADMIN") {
+        this.showAdminFunction = true;
+      }
+    }
   }
 
 
-  showMessageSoon() {
-    this.showMyMessage8 = false;
-    this.showMyMessage6 = false;
-    this.showMyMessage = true;
-    this.showMyMessage1 = false;
-    this.showMyMessage3 = false;
+  showSingIn() {
+    this.showAdminPage = false;
+    this.showSettingUser = false;
+    this.showSingInForm = true;
+    this.showSingUpForm = false;
+    this.showFunFicTable = false;
+    this.addFunFicFormUser = false
+    this.showAddChapterEmailUser = false;
+    this.searchFunFic = false;
   }
 
-  showMessageSoon1() {
-    this.showMyMessage8 = false;
-    this.showMyMessage6 = false;
-    this.showMyMessage1 = true;
-    this.showMyMessage = false;
-    this.showMyMessage3 = false;
+  showSingUp() {
+    this.showAdminPage = false;
+    this.showSettingUser = false;
+    this.showSingUpForm = true;
+    this.showSingInForm = false;
+    this.showFunFicTable = false;
+    this.addFunFicFormUser = false
+    this.showAddChapterEmailUser = false;
+    this.searchFunFic = false;
   }
 
-  showMessageSoon8() {
-    this.showMyMessage1 = false;
-    this.showMyMessage = false;
-    this.showMyMessage3 = false;
-    this.showMyMessage6 = false;
-    this.showMyMessage8 = true;
+  showAdmin() {
+    this.showSingUpForm = false;
+    this.showSingInForm = false;
+    this.showFunFicTable = false;
+    this.showSettingUser = false;
+    this.showAdminPage = true;
+    this.addFunFicFormUser = false
+    this.showAddChapterEmailUser = false;
+    this.searchFunFic = false;
   }
 
+  showAddFunFic() {
+    this.showSingUpForm = false;
+    this.showSingInForm = false;
+    this.showFunFicTable = false;
+    this.showSettingUser = false;
+    this.showAdminPage = false;
+    this.addFunFicFormUser = true;
+    this.showAddChapterEmailUser = false;
+    this.searchFunFic = false;
+  }
 
-  showMessageSoon6() {
-    this.showMyMessage8 = false;
-    this.showMyMessage1 = false;
-    this.showMyMessage = false;
-    this.showMyMessage3 = false;
-    this.showMyMessage6 = true;
+  showSetting() {
+    this.showAdminPage = false;
+    this.showSingUpForm = false;
+    this.showSingInForm = false;
+    this.showFunFicTable = false;
+    this.showSettingUser = true;
+    this.addFunFicFormUser = false
+    this.showAddChapterEmailUser = false;
+    this.searchFunFic = false;
     // @ts-ignore
     this.user1 = JSON.parse(sessionStorage.getItem('user'));
     console.log(this.user1);
@@ -77,8 +133,42 @@ export class AppComponent implements OnInit {
 
 
   logout() {
-    localStorage.removeItem('currentUser');
-    // @ts-ignore
-    this.currentUserSubject.next(null);
+    sessionStorage.removeItem('user');
+    this.reverseForm = true;
+    this.showFunction = false;
+    this.showSingInForm = false;
+    this.showSingUpForm = false;
+    this.showFunFicTable = false;
+    this.showAdminPage = false;
+    this.showSettingUser = false;
+    this.addFunFicFormUser = false
+    this.showAddChapterEmailUser = false;
+    this.searchFunFic = false;
+  }
+
+  searchFunFicForm(funFic: string){
+console.log(funFic)
+
+    this.funFicService.searchFunFic(funFic).subscribe(
+      (response: FunFic[]) => {
+        this.reverseForm = true;
+        this.showFunction = false;
+        this.showSingInForm = false;
+        this.showSingUpForm = false;
+        this.showFunFicTable = false;
+        this.showAdminPage = false;
+        this.showSettingUser = false;
+        this.addFunFicFormUser = false
+        this.showAddChapterEmailUser = false;
+        this.searchFunFic = true;
+        console.log(response)
+        this.showFunFic = true;
+        this.funFicResultSearch = response;
+
+      },
+      (error: HttpErrorResponse) => {
+        this.result = error.message;
+      }
+    )
   }
 }

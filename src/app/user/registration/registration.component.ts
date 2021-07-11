@@ -14,19 +14,21 @@ export class RegistrationComponent implements OnInit {
   // @ts-ignore
   public user: User;
   @Output()
-  onShowElementUn = new EventEmitter();
+  public onShowElementUn = new EventEmitter();
   // @ts-ignore
-  singUpForm: FormGroup;
+  public singUpForm: FormGroup;
+  // @ts-ignore
+  public result:string;
 
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.singUpForm = new FormGroup({
-      "login": new FormControl(null, [Validators.required, Validators.pattern("[^a-zA-Z0-9]"), Validators.minLength(4), Validators.maxLength(15)]),
-      "password": new FormControl(null, [Validators.required, Validators.pattern("[^a-zA-Z0-9]"), Validators.minLength(4), Validators.maxLength(15)]),
+      "login": new FormControl(null, [Validators.required, Validators.minLength(4), Validators.maxLength(15)]),
+      "password": new FormControl(null, [Validators.required, Validators.minLength(4), Validators.maxLength(15)]),
       "email": new FormControl(null, [Validators.required, Validators.email, Validators.minLength(4), Validators.maxLength(30)]),
-      "nameUser": new FormControl(null, [Validators.required, Validators.pattern("[^a-zA-Z]"), Validators.minLength(4), Validators.maxLength(15)]),
-      "surnameUser": new FormControl(null, [Validators.required, Validators.pattern("[^a-zA-Z]"), Validators.minLength(4), Validators.maxLength(15)])
+      "nameUser": new FormControl(null, [Validators.required, Validators.minLength(4), Validators.maxLength(15)]),
+      "surnameUser": new FormControl(null, [Validators.required, Validators.minLength(4), Validators.maxLength(15)])
     })
   }
   public onAddUser(addForm: FormGroupDirective): void {
@@ -39,7 +41,7 @@ export class RegistrationComponent implements OnInit {
         console.log(response)
       },
       (error: HttpErrorResponse) => {
-        alert(error.message)
+        this.result = error.message;
       }
     )
   }

@@ -10,6 +10,8 @@ import {FunFicService} from "../service/funFic.service";
 import {ChapterService} from "../service/chapter.service";
 import {GenreService} from "../service/genre.service";
 import {TagsService} from "../service/tags.service";
+import {FavoriteService} from "../service/favorite.service";
+import {Favorite} from "../model/favorite";
 
 @Component({
   selector: 'app-user',
@@ -17,16 +19,18 @@ import {TagsService} from "../service/tags.service";
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  public showMyMessage7 = true;
-  public showMyMessage8 = false;
-  public showMyMessage9 = false;
-  public showMyMessage10 = false;
-  public showMyMessage11 = false;
+  public infoByUser = true;
+  public funFicListSettingUser = false;
+  public readChapterByUser = false;
+  public addFunFicUser = false;
+  public addChapterUser = false;
+  public showFavoriteUser = false;
+  public readChapterByFavorite = false;
 
   @Input()
-  user!: User;
+  public user!: User;
   // @ts-ignore
-  user1: User;
+  public user1: User;
   // @ts-ignore
   public funFicList: FunFic[];
   // @ts-ignore
@@ -40,20 +44,26 @@ export class UserComponent implements OnInit {
   // @ts-ignore
   public tagList: Tags[];
   // @ts-ignore
-  form: FormGroup;
+  public form: FormGroup;
   // @ts-ignore
-  genre1: string
+  public genre1: string
   // @ts-ignore
-  funFicNew: FunFic;
+  public funFicNew: FunFic;
   // @ts-ignore
-  selectedItem: string[]
+  public selectedItem: string[]
   // @ts-ignore
-  addFunFicForm: FormGroup;
+  public addFunFicForm: FormGroup;
   // @ts-ignore
-  addChapterForm: FormGroup;
+  public addChapterForm: FormGroup;
+  // @ts-ignore
+  public funFicByFavorite: FunFic[];
+  // @ts-ignore
+  public chapterListByFavorite: Chapter[];
+  // @ts-ignore
+  public ratingResult:number;
 
 
-  constructor(private funFicService: FunFicService, private chapterService: ChapterService, private genreService: GenreService, private tagsService: TagsService) {
+  constructor(private funFicService: FunFicService, private chapterService: ChapterService, private genreService: GenreService, private tagsService: TagsService, private favoriteService: FavoriteService) {
     this.form = new FormGroup({
       country: new FormControl(null)
     })
@@ -62,27 +72,90 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     this.selectedItem = new Array<string>();
     this.addFunFicForm = new FormGroup({
-      "nameFunFic": new FormControl(null, [Validators.required, Validators.pattern("[^a-zA-Z]"), Validators.minLength(4), Validators.maxLength(30)]),
-      "shortDescription": new FormControl(null, [Validators.required, Validators.pattern("[^a-zA-Z]"), Validators.minLength(4), Validators.maxLength(60)])
+      "nameFunFic": new FormControl(null, [Validators.required, Validators.minLength(4), Validators.maxLength(30)]),
+      "shortDescription": new FormControl(null, [Validators.required, Validators.minLength(4), Validators.maxLength(60)])
     });
     this.addChapterForm = new FormGroup({
-      "numberChapter": new FormControl(null, [Validators.required, Validators.pattern("[^0-9]"), Validators.minLength(4), Validators.maxLength(15)]),
-      "nameChapter": new FormControl(null, [Validators.required, Validators.pattern("[^a-zA-Z]"), Validators.minLength(4), Validators.maxLength(30)]),
-      "textChapter": new FormControl(null, [Validators.required, Validators.pattern("[^a-zA-Z]"), Validators.minLength(4)])
+      "numberChapter": new FormControl(null, [Validators.required, Validators.minLength(4), Validators.maxLength(15)]),
+      "nameChapter": new FormControl(null, [Validators.required, Validators.minLength(4), Validators.maxLength(30)]),
+      "textChapter": new FormControl(null, [Validators.required, Validators.minLength(4)])
     });
   }
 
+  public getUserListFavorite(){
+    // @ts-ignore
+    this.user1 = JSON.parse(sessionStorage.getItem('user'));
+    this.favoriteService.getFavoriteList(this.user1.id).subscribe(
+      (response: FunFic[]) => {
+        this.funFicByFavorite = response;
+        this.totalLength = this.funFicByFavorite.length;
+        this.infoByUser = false;
+        this.funFicListSettingUser = false;
+        this.readChapterByUser = false;
+        this.addFunFicUser = false;
+        this.addChapterUser = false;
+        this.showFavoriteUser = true;
+        this.readChapterByFavorite = false;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
+  }
 
-  getUserListFunficId(): void {
+  public deleteFunFicFavorite(idFunFic: number){
+    this.favoriteService.deleteFavoriteByUser(idFunFic).subscribe(
+      (response: FunFic[]) => {
+        this.funFicByFavorite = response;
+        this.totalLength = this.funFicByFavorite.length;
+        this.infoByUser = false;
+        this.funFicListSettingUser = false;
+        this.readChapterByUser = false;
+        this.addFunFicUser = false;
+        this.addChapterUser = false;
+        this.showFavoriteUser = false;
+        this.readChapterByFavorite = false;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
+  }
+
+  public readFunFicFavorite(idFunFic: number){
+    this.favoriteService.getReadFunFic(idFunFic).subscribe(
+      (response: Chapter[]) => {
+        this.chapterListByFavorite = response;
+        this.infoByUser = false;
+        this.funFicListSettingUser = false;
+        this.readChapterByUser = false;
+        this.addFunFicUser = false;
+        this.addChapterUser = false;
+        this.showFavoriteUser = false;
+        this.readChapterByFavorite = true;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
+  }
+
+
+
+  public getUserListFunficId(){
     // @ts-ignore
     this.user1 = JSON.parse(sessionStorage.getItem('user'));
     this.funFicService.getFunFicListId(this.user1.id).subscribe(
       (response: FunFic[]) => {
         this.funFicList = response;
         this.totalLength = this.funFicList.length;
-        console.log(this.totalLength);
-        this.showMyMessage7 = false;
-        this.showMyMessage8 = true;
+        this.infoByUser = false;
+        this.funFicListSettingUser = true;
+        this.readChapterByUser = false;
+        this.addFunFicUser = false;
+        this.addChapterUser = false;
+        this.showFavoriteUser = false;
+        this.readChapterByFavorite = false;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -95,8 +168,12 @@ export class UserComponent implements OnInit {
       (response: Chapter[]) => {
         this.chapterList = response;
         console.log(response);
-        this.showMyMessage8 = false;
-        this.showMyMessage9 = true;
+        this.funFicListSettingUser = false;
+        this.readChapterByUser = true;
+        this.addFunFicUser = false;
+        this.addChapterUser = false;
+        this.showFavoriteUser = false;
+        this.readChapterByFavorite = false;
       },
       (error: HttpErrorResponse) => {
         alert(error.message)
@@ -106,15 +183,23 @@ export class UserComponent implements OnInit {
 
   public deleteFunFicId(id: number) {
     this.funFicService.deleteFunFicById(id).subscribe();
-    this.showMyMessage7 = true;
-    this.showMyMessage8 = false;
+    this.infoByUser = true;
+    this.funFicListSettingUser = false;
+    this.readChapterByUser = false;
+    this.addFunFicUser = false;
+    this.addChapterUser = false;
+    this.showFavoriteUser = false;
+    this.readChapterByFavorite = false;
   }
 
   public showFunFicForm() {
-    this.showMyMessage10 = true;
-    this.showMyMessage7 = false;
-    this.showMyMessage8 = false;
-    this.showMyMessage9 = false;
+    this.addFunFicUser = true;
+    this.infoByUser = false;
+    this.funFicListSettingUser = false;
+    this.readChapterByUser = false;
+    this.addChapterUser = false;
+    this.showFavoriteUser = false;
+    this.readChapterByFavorite = false;
     this.genreService.getAllGenre().subscribe(
       (response: Genre[]) => {
         this.genreList = response;
@@ -152,8 +237,13 @@ export class UserComponent implements OnInit {
     this.funFicService.addFunFic(addForm.value, this.genre1 = this.country, this.user2.id, this.selectedItem).subscribe(
       (response: FunFic) => {
         this.funFicNew = response;
-        this.showMyMessage10 = false;
-        this.showMyMessage11 = true;
+        this.addFunFicUser = false;
+        this.addChapterUser = true;
+        this.infoByUser = false;
+        this.funFicListSettingUser = false;
+        this.readChapterByUser = false;
+        this.showFavoriteUser = false;
+        this.readChapterByFavorite = false;
         console.log(response)
 
       },
@@ -169,7 +259,41 @@ export class UserComponent implements OnInit {
     document.getElementById("clickAddChapter").click();
     this.chapterService.addChapter(addForm.value, this.funFicNew.id).subscribe(
       (response: Chapter) => {
+        this.infoByUser = false;
+        this.funFicListSettingUser = false;
+        this.readChapterByUser = false;
+        this.addFunFicUser = false;
+        this.addChapterUser = false;
+        this.showFavoriteUser = false;
+        this.readChapterByFavorite = false;
         console.log(response);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message)
+      }
+    )
+  }
+  public addLikes(idChapter: number): void {
+    console.log(idChapter)
+    // @ts-ignore
+    const user = JSON.parse(sessionStorage.getItem('user'));
+    this.chapterService.addLikes(idChapter, user).subscribe(
+      (response: FunFic) => {
+        console.log(response)
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message)
+      }
+    )
+  }
+
+  public addRating(idChapter: number): void {
+    // @ts-ignore
+    this.ratingResult = this.form ? this.form.get('rating').value : '';
+
+    this.chapterService.addRating(idChapter, this.ratingResult).subscribe(
+      (response: Chapter) => {
+        console.log(response)
       },
       (error: HttpErrorResponse) => {
         alert(error.message)

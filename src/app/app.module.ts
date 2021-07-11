@@ -19,6 +19,8 @@ import {FunFicService} from "./service/funFic.service";
 import {GenreService} from "./service/genre.service";
 import {TagsService} from "./service/tags.service";
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,7 @@ import {TagsService} from "./service/tags.service";
     RegistrationComponent,
     FunFicTableComponent,
     ChapterComponent,
-    AdminComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

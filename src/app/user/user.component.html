@@ -12,7 +12,7 @@
                                                       (click)="getUserListFunficId()">FunFic List</a></li></th>
                     <th> <li role="presentation"><a class="button" aria-controls="devlopment" role="tab" data-toggle="tab">Updated
                       info</a></li></th>
-                    <th> <li role="presentation"><a class="button" aria-controls="devlopment" role="tab" data-toggle="tab">Мои
+                    <th> <li role="presentation"><a class="button" aria-controls="devlopment" role="tab" data-toggle="tab" (click)="getUserListFavorite()">Мои
                       закладки</a></li></th>
                   </tr>
                 </table>
@@ -23,7 +23,99 @@
       </div>
     </div>
   </div>
-  <div *ngIf="showMyMessage7">
+
+  <div id="wrapper" *ngIf="showFavoriteUser">
+    <div id="featured-wrapper">
+      <div id="featured" class="extra2 margin-btm container">
+        <div class="main-title">
+          <h2>Your Favorite</h2>
+          <span class="byline"></span></div>
+        <table>
+          <th>
+            <ul *ngIf="funFicByFavorite">
+              <li *ngFor="let funFiction of funFicByFavorite | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalLength }">
+
+                 <div class="ebox1"><span class="fa fa-pagelines"></span>
+                  <div class="title">
+                    <h2>Name: {{funFiction.nameFun}}</h2>
+                    <div *ngFor="let tags of funFiction.tags">
+                      <span class="byline">Tags: {{tags.typeTags}}</span>
+                    </div>
+                  </div>
+                  <p>Description: {{funFiction.shortDescription}}</p>
+                  <p>Genre: {{funFiction.genre}}</p>
+                  <a class="button" (click)="deleteFunFicFavorite(funFiction.id)">Delete fun fic</a>
+                  <a class="button" (click)="readFunFicFavorite(funFiction.id)">Read fun fic</a>
+                 </div>
+              </li>
+            </ul>
+            <pagination-controls (pageChange)="page = $event"></pagination-controls>
+          </th>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-9 col-sm-8 col-xs-12">
+    <div class="idea-tab-content">
+      <div class="tab-content">
+        <div *ngIf="readChapterByFavorite">
+          <ul *ngIf="chapterListByFavorite">
+            <li *ngFor="let chapter of chapterListByFavorite">
+          <div id="featured-wrapper1">
+            <section class="blog_area single-post-area section-padding mySetting">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-8 posts-list">
+                    <div class="single-post">
+                      <div class="blog_details">
+                        <h2>
+                          Chapter №{{chapter.numberChapter}}
+                        </h2>
+
+                        <h2>{{chapter.nameChapter}}
+                        </h2>
+                        <ul class="blog-info-link mt-3 mb-4">
+                          <li><i class="fa fa-user"></i>Amount likes: {{chapter.like}}<a class="fa fa-user"
+                                                                                         (click)="addLikes(chapter.id)">add
+                            like</a></li>
+                          <li><i class="fa fa-comments"></i>Rating: {{chapter.rating.toFixed(2)}}<a class="fa fa-user" (click)="addRating(chapter.id)">Add rating:</a>
+                            <span class="custom-dropdown big">
+                          <form [formGroup]="form">
+                          <select formControlName="rating">
+                            <option [ngValue]="1">1</option>
+                            <option [ngValue]="2">2</option>
+                            <option [ngValue]="3">3</option>
+                            <option [ngValue]="4">4</option>
+                            <option [ngValue]="5">5</option>
+                          </select>
+                          </form>
+                        </span></li>
+
+
+
+
+                        </ul>
+                        <ul class="blog-info-link mt-3 mb-4">
+                        </ul>
+                        <p class="excert">
+                          {{chapter.textChapter}}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="infoByUser">
     <div class="wrapper my-account">
       <div class="idea-area  ptb-80">
         <div class="container">
@@ -67,11 +159,11 @@
       </div>
     </div>
   </div>
-  <div id="wrapper" *ngIf="showMyMessage8">
+  <div id="wrapper" *ngIf="funFicListSettingUser">
     <div id="featured-wrapper">
       <div id="featured" class="extra2 margin-btm container">
         <div class="main-title">
-          <h2>Our best products</h2>
+          <h2>Fun Fic list by User</h2>
           <span class="byline"></span>
         </div>
         <table>
@@ -91,7 +183,6 @@
                   <p>Genre: {{funFiction.genre}}</p>
                   <a (click)="getIdChapter(funFiction.id)" class="button">Read Chapter</a>
                   <a (click)="deleteFunFicId(funFiction.id)" class="button">Delete Fun Fic</a>
-                  <a (click)="getIdChapter(funFiction.id)" class="button">Updated Fun Fic</a>
                   <a (click)="showFunFicForm()" class="button">Add Fun Fic</a>
                 </div>
               </li>
@@ -103,7 +194,7 @@
     </div>
   </div>
 
-  <div *ngIf="showMyMessage9">
+  <div *ngIf="readChapterByUser">
     <ul *ngIf="chapterList">
       <li *ngFor="let chapter of chapterList">
         <section class="blog_area single-post-area section-padding mySetting">
@@ -118,8 +209,25 @@
                     <h2>{{chapter.nameChapter}}
                     </h2>
                     <ul class="blog-info-link mt-3 mb-4">
-                      <li><i class="fa fa-user"></i> Кол-во лайков</li>
-                      <li><a href="#"><i class="fa fa-comments"></i>Comments</a></li>
+                      <li><i class="fa fa-user"></i>Amount likes: {{chapter.like}}<a class="fa fa-user"
+                                                                                     (click)="addLikes(chapter.id)">add
+                        like</a></li>
+                      <li><i class="fa fa-comments"></i>Rating: {{chapter.rating.toFixed(2)}}<a class="fa fa-user" (click)="addRating(chapter.id)">Add rating:</a>
+                        <span class="custom-dropdown big">
+                          <form [formGroup]="form">
+                          <select formControlName="rating">
+                            <option [ngValue]="1">1</option>
+                            <option [ngValue]="2">2</option>
+                            <option [ngValue]="3">3</option>
+                            <option [ngValue]="4">4</option>
+                            <option [ngValue]="5">5</option>
+                          </select>
+                          </form>
+                        </span></li>
+
+
+
+
                     </ul>
                     <ul class="blog-info-link mt-3 mb-4">
                     </ul>
@@ -135,9 +243,7 @@
       </li>
     </ul>
   </div>
-
-
-  <div *ngIf="showMyMessage10">
+  <div *ngIf="addFunFicUser">
     <div class="comment-form">
       <h4>Add Fun Fic</h4>
       <form class="form-contact comment_form" id="commentForm" #funFicForm="ngForm" [formGroup]="addFunFicForm"
@@ -206,7 +312,7 @@
     </div>
   </div>
 </div>
-<div *ngIf="showMyMessage11">
+<div *ngIf="addChapterUser">
 
     <div class="comment-form">
       <h4>Add Fun Fic</h4>
