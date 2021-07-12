@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "heroku-postbuild": "ng build --prod",
-    "start": "/dist/FinFickProject/src/app/app.component.html $PORT",
+    "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -19,10 +19,8 @@
     "@angular/platform-browser": "~12.0.5",
     "@angular/platform-browser-dynamic": "~12.0.5",
     "@angular/router": "~12.0.5",
-    "@types/file-saver": "^2.0.2",
     "bootstrap": "^5.0.2",
     "express": "^4.17.1",
-    "file-saver": "^2.0.5",
     "jquery": "^3.6.0",
     "ngx-pagination": "^5.1.1",
     "path": "^0.12.7",
@@ -34,7 +32,6 @@
     "@angular-devkit/build-angular": "~12.0.5",
     "@angular/cli": "~12.0.5",
     "@angular/compiler-cli": "~12.0.5",
-    "@types/file-saver": "^2.0.3",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "enhanced-resolve": "^3.3.0",
@@ -44,7 +41,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
-    "typescript": "^4.3.5"
+    "typescript": "^4.2.4"
   },
   "engines": {
     "node": "14.17.1",
