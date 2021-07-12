@@ -15,6 +15,6 @@ export class TagsService{
   constructor(private http: HttpClient) {
   }
   public getAllTags(): Observable<Tags[]>{
-    return this.http.get<Tags[]>(`${this.apiServerUrl}/working/listAllTags`);
+    return this.http.get<Tags[]>(`${this.apiServerUrl}working/listAllTags`);
   }
 }

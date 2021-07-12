@@ -19,17 +19,17 @@ export class FavoriteService{
   }
   public addFavorite(idChapter: number,user: User): Observable<Favorite>{
   user.idChapter = idChapter;
-    return this.http.post<Favorite>(`${this.apiServerUrl}/working/addMyFavorite`, user);
+    return this.http.post<Favorite>(`${this.apiServerUrl}working/addMyFavorite`, user);
   }
   public getFavoriteList(idUser: number): Observable<FunFic[]>{
-    return this.http.get<FunFic[]>(`${this.apiServerUrl}/working/listFavoriteByIdUser/${idUser}`);
+    return this.http.get<FunFic[]>(`${this.apiServerUrl}working/listFavoriteByIdUser/${idUser}`);
   }
 
   public deleteFavoriteByUser(idFunFic: number): Observable<FunFic[]>{
-    return this.http.get<FunFic[]>(`${this.apiServerUrl}/working/deleteFavoriteByUser/${idFunFic}`);
+    return this.http.get<FunFic[]>(`${this.apiServerUrl}working/deleteFavoriteByUser/${idFunFic}`);
   }
 
   public getReadFunFic(idFunFic: number): Observable<Chapter[]>{
-    return this.http.get<Chapter[]>(`${this.apiServerUrl}/working/chapterByFunFic/${idFunFic}`);
+    return this.http.get<Chapter[]>(`${this.apiServerUrl}working/chapterByFunFic/${idFunFic}`);
   }
 }

@@ -18,7 +18,7 @@ export class CommentService{
   }
   public addComments(comment: CommentRequest, id: number): Observable<CommentRequest>{
     comment.idChapter = id;
-    return this.http.post<CommentRequest>(`${this.apiServerUrl}/user/commentSave`, comment);
+    return this.http.post<CommentRequest>(`${this.apiServerUrl}user/commentSave`, comment);
   }
 
 }
