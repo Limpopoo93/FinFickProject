@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "../model/user";
-import {environment} from "../../environments/environment";
+import {environment} from "../../environments/environment.prod";
 import {CommentRequest} from "../model/CommentRequest";
 import {FunFic} from "../model/funFic";
 import {Chapter} from "../model/chapter";
@@ -11,7 +11,7 @@ import {Chapter} from "../model/chapter";
   providedIn: 'root'
 })
 export class CommentService{
-  private apiServerUrl = environment.apiBaseUrl;
+  private apiServerUrl = environment.apiUrl;
   // @ts-ignore
   public currentUser: Observable<User>;
   constructor(private http: HttpClient) {
