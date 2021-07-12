@@ -1,6 +1,6 @@
 {
   "name": "fin-fick-project",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "heroku-postbuild": "ng build --prod",
