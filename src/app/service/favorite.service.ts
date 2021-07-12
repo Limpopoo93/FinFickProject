@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "../model/user";
-import {environment} from "../../environments/environment";
+import {environment} from "../../environments/environment.prod";
 import {Favorite} from "../model/favorite";
 import {publish} from "rxjs/operators";
 import {FunFic} from "../model/funFic";
@@ -12,7 +12,7 @@ import {Chapter} from "../model/chapter";
   providedIn: 'root'
 })
 export class FavoriteService{
-  private apiServerUrl = environment.apiBaseUrl;
+  private apiServerUrl = environment.apiUrl;
   // @ts-ignore
   public currentUser: Observable<User>;
   constructor(private http: HttpClient) {

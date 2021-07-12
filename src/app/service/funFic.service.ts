@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "../model/user";
-import {environment} from "../../environments/environment";
+import {environment} from "../../environments/environment.prod";
 import {FunFic} from "../model/funFic";
 import {FunFicSearchRequest} from "../model/funFicSearchRequest";
 
@@ -10,7 +10,7 @@ import {FunFicSearchRequest} from "../model/funFicSearchRequest";
   providedIn: 'root'
 })
 export class FunFicService {
-  private apiServerUrl = environment.apiBaseUrl;
+  private apiServerUrl = environment.apiUrl;
   // @ts-ignore
   public currentUser: Observable<User>;
 
