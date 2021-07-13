@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {User} from "./model/user";
-import {FormGroup, FormGroupDirective, NgForm} from "@angular/forms";
+import {FormGroup} from "@angular/forms";
 import {HttpErrorResponse} from "@angular/common/http";
 import {FunFicService} from "./service/funFic.service";
 import {FunFic} from "./model/funFic";
@@ -27,15 +27,16 @@ export class AppComponent implements OnInit {
   // @ts-ignore
   public addChapterForm: FormGroup;
   // @ts-ignore
-  public result:String;
+  public result: String;
   // @ts-ignore
   public funFic: string;
   @Output()
   funFicSelected = new EventEmitter();
   // @ts-ignore
-  funFicResultSearch:FunFic[]
+  funFicResultSearch: FunFic[]
   // @ts-ignore
   public showFunFic;
+
   constructor(private funFicService: FunFicService) {
   }
 
@@ -106,17 +107,6 @@ export class AppComponent implements OnInit {
     this.searchFunFic = false;
   }
 
-  showAddFunFic() {
-    this.showSingUpForm = false;
-    this.showSingInForm = false;
-    this.showFunFicTable = false;
-    this.showSettingUser = false;
-    this.showAdminPage = false;
-    this.addFunFicFormUser = true;
-    this.showAddChapterEmailUser = false;
-    this.searchFunFic = false;
-  }
-
   showSetting() {
     this.showAdminPage = false;
     this.showSingUpForm = false;
@@ -146,8 +136,8 @@ export class AppComponent implements OnInit {
     this.searchFunFic = false;
   }
 
-  searchFunFicForm(funFic: string){
-console.log(funFic)
+  searchFunFicForm(funFic: string) {
+    console.log(funFic)
 
     this.funFicService.searchFunFic(funFic).subscribe(
       (response: FunFic[]) => {
@@ -171,4 +161,5 @@ console.log(funFic)
       }
     )
   }
+
 }

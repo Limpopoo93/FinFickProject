@@ -11,7 +11,6 @@ import {ChapterService} from "../service/chapter.service";
 import {GenreService} from "../service/genre.service";
 import {TagsService} from "../service/tags.service";
 import {FavoriteService} from "../service/favorite.service";
-import {Favorite} from "../model/favorite";
 
 @Component({
   selector: 'app-user',
@@ -60,7 +59,7 @@ export class UserComponent implements OnInit {
   // @ts-ignore
   public chapterListByFavorite: Chapter[];
   // @ts-ignore
-  public ratingResult:number;
+  public ratingResult: number;
 
 
   constructor(private funFicService: FunFicService, private chapterService: ChapterService, private genreService: GenreService, private tagsService: TagsService, private favoriteService: FavoriteService) {
@@ -72,17 +71,17 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     this.selectedItem = new Array<string>();
     this.addFunFicForm = new FormGroup({
-      "nameFunFic": new FormControl(null, [Validators.required, Validators.minLength(4), Validators.maxLength(30)]),
+      "nameFun": new FormControl(null, [Validators.required, Validators.minLength(4), Validators.maxLength(30)]),
       "shortDescription": new FormControl(null, [Validators.required, Validators.minLength(4), Validators.maxLength(60)])
     });
     this.addChapterForm = new FormGroup({
-      "numberChapter": new FormControl(null, [Validators.required, Validators.minLength(4), Validators.maxLength(15)]),
+      "numberChapter": new FormControl(null, [Validators.required,Validators.minLength(4), Validators.maxLength(15)]),
       "nameChapter": new FormControl(null, [Validators.required, Validators.minLength(4), Validators.maxLength(30)]),
       "textChapter": new FormControl(null, [Validators.required, Validators.minLength(4)])
     });
   }
 
-  public getUserListFavorite(){
+  public getUserListFavorite() {
     // @ts-ignore
     this.user1 = JSON.parse(sessionStorage.getItem('user'));
     this.favoriteService.getFavoriteList(this.user1.id).subscribe(
@@ -103,7 +102,7 @@ export class UserComponent implements OnInit {
     )
   }
 
-  public deleteFunFicFavorite(idFunFic: number){
+  public deleteFunFicFavorite(idFunFic: number) {
     this.favoriteService.deleteFavoriteByUser(idFunFic).subscribe(
       (response: FunFic[]) => {
         this.funFicByFavorite = response;
@@ -122,7 +121,7 @@ export class UserComponent implements OnInit {
     )
   }
 
-  public readFunFicFavorite(idFunFic: number){
+  public readFunFicFavorite(idFunFic: number) {
     this.favoriteService.getReadFunFic(idFunFic).subscribe(
       (response: Chapter[]) => {
         this.chapterListByFavorite = response;
@@ -141,8 +140,7 @@ export class UserComponent implements OnInit {
   }
 
 
-
-  public getUserListFunficId(){
+  public getUserListFunficId() {
     // @ts-ignore
     this.user1 = JSON.parse(sessionStorage.getItem('user'));
     this.funFicService.getFunFicListId(this.user1.id).subscribe(
@@ -273,6 +271,7 @@ export class UserComponent implements OnInit {
       }
     )
   }
+
   public addLikes(idChapter: number): void {
     console.log(idChapter)
     // @ts-ignore

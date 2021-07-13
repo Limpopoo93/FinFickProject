@@ -1,8 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {User} from "../../model/user";
-import {FormGroupDirective, NgForm} from "@angular/forms";
+import {FormControl, FormGroup, FormGroupDirective, Validators} from "@angular/forms";
 import {HttpErrorResponse} from "@angular/common/http";
-import {FormControl, FormGroup, Validators} from "@angular/forms"
 import {UserService} from "../../service/user.service";
 
 @Component({
@@ -21,7 +20,9 @@ export class LoginComponent implements OnInit {
 
   @Output()
   onShowElementIn = new EventEmitter();
-  constructor(private userService: UserService) { }
+
+  constructor(private userService: UserService) {
+  }
 
   ngOnInit(): void {
     this.singInForm = new FormGroup({

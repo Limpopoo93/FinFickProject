@@ -1,246 +1,278 @@
 <div id="featured-wrapper1">
-<div class="wrapper my-account">
-  <div class="idea-area  ptb-80">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3 col-sm-4 col-xs-12">
-          <div class="idea-tab-menu">
-            <ul class="nav idea-tab" role="tablist">
+  <div class="wrapper my-account">
+    <div class="idea-area  ptb-80">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-4 col-xs-12">
+            <div class="idea-tab-menu">
+              <ul class="nav idea-tab" role="tablist">
 
-              <li role="presentation"><a class="button"  aria-controls="design" role="tab" data-toggle="tab" (click)="showAddFunFicEmail()">Add Fun Fic</a></li>
-              <li role="presentation"><a class="button"  aria-controls="devlopment" role="tab" data-toggle="tab" (click)="showListUser()">List User</a></li>
-            </ul>
+                <li role="presentation"><a class="button" aria-controls="design" role="tab" data-toggle="tab"
+                                           (click)="showAddFunFicEmail()">Add Fun Fic</a></li>
+                <li role="presentation"><a class="button" aria-controls="devlopment" role="tab" data-toggle="tab"
+                                           (click)="showListUser()">List User</a></li>
+              </ul>
+            </div>
           </div>
-        </div>
-        <div class="col-md-9 col-sm-8 col-xs-12">
-          <div class="idea-tab-content">
-            <div class="tab-content">
+          <div class="col-md-9 col-sm-8 col-xs-12">
+            <div class="idea-tab-content">
+              <div class="tab-content">
 
 
-              <div class="container" *ngIf="showAddFunFicEmailUser">
-                <form id="commentForm" #funFicForm="ngForm" [formGroup]="addFunFicForm" (ngSubmit)="onFunFicPush(funFicForm)">
-                  <div class="row23">
-                    <div class="col-25">
-                      <label>Name Fun Fic</label>
-                    </div>
-                    <div class="col-75">
-                      <input ngModel name="nameFun" id="nameFun" type="text" placeholder="nameFun" formControlName="nameFun">
-                      <span *ngIf="addFunFicForm.get('nameFun')?.invalid && addFunFicForm.get('nameFun')?.touched"  class="error"><h1>nameFunFic is not valid</h1></span>
-                    </div>
-                  </div>
-                  <div class="row23">
-                    <div class="col-25">
-                      <label>Email User</label>
-                    </div>
-                    <div class="col-75">
-                      <input ngModel name="emailUser" id="emailUser" type="text" placeholder="email User" formControlName="emailUser">
-                      <span *ngIf="addFunFicForm.get('emailUser')?.invalid && addFunFicForm.get('emailUser')?.touched"  class="error"><h1>emailUser is not valid</h1></span>
-                    </div>
-                  </div>
-                  <div class="row23">
-                    <div class="col-25">
-                      <label>Short Description</label>
-                    </div>
-                    <div class="col-75">
-                      <textarea ngModel name="shortDescription" id="shortDescription" placeholder="short Description" style="height:200px" formControlName="shortDescription"></textarea>
-                      <span *ngIf="addFunFicForm.get('shortDescription')?.invalid && addFunFicForm.get('shortDescription')?.touched"  class="error"><h1>shortDescription is not valid</h1></span>
-                    </div>
-                  </div>
-                  <div class="row23">
-                    <div class="col-25">
-                      <label>Genre</label>
-                    </div>
-                    <div class="col-75">
-                      <form [formGroup]="form">
-                        <label>Genre <em></em></label>
-                        <select formControlName="country" class="selectpicker select-custom" data-live-search="true">
-                          <option *ngFor="let genre of genreList"
-                                  [ngValue]="genre.typeGenre">{{genre.typeGenre}}</option>
-                        </select>
-                      </form>
+                <div class="container" *ngIf="showAddFunFicEmailUser">
+                  <form id="commentForm" #funFicForm="ngForm" [formGroup]="addFunFicForm"
+                        (ngSubmit)="onFunFicPush(funFicForm)">
+                    <div class="row23">
+                      <div class="col-25">
+                        <label>Name Fun Fic</label>
                       </div>
-                  </div>
-                  <div class="row23">
-                    <div class="col-25">
-                      <label>Tags</label>
+                      <div class="col-75">
+                        <input ngModel name="nameFun" id="nameFun" type="text" placeholder="nameFun"
+                               formControlName="nameFun">
+                        <span *ngIf="addFunFicForm.get('nameFun')?.invalid && addFunFicForm.get('nameFun')?.touched"
+                              class="error"><h1>nameFunFic is not valid</h1></span>
+                      </div>
                     </div>
-                    <div class="col-75">
-                      <section>
-                        <a *ngFor="let tags of tagList"><input type="checkbox"
-                                                               class='tag-link-108 tag-link-position-1 a_f795_0 checks'
-                                                               title='5 topics' name="Custom Code" [value]="tags.typeTags"
-                                                               (change)="onChangeTags($event)">{{tags.typeTags}}
-                        </a>
-                      </section>
+                    <div class="row23">
+                      <div class="col-25">
+                        <label>Email User</label>
+                      </div>
+                      <div class="col-75">
+                        <input ngModel name="emailUser" id="emailUser" type="text" placeholder="email User"
+                               formControlName="emailUser">
+                        <span *ngIf="addFunFicForm.get('emailUser')?.invalid && addFunFicForm.get('emailUser')?.touched"
+                              class="error"><h1>emailUser is not valid</h1></span>
+                      </div>
                     </div>
-                  </div>
-                  <button type="submit" [disabled]="funFicForm.invalid" class="button button-contactForm btn_1 boxed-btn"
-                          id="clickMessage">Add Fun Fic
-                  </button>
-                </form>
-              </div>
-
-
-
-              <div class="container" *ngIf="showAddChapterEmailUser">
-                <form id="chapterForm" #funFicForm="ngForm" [formGroup]="addChapterForm" (ngSubmit)="addChapterPush(funFicForm)">
-                  <div class="row23">
-                    <div class="col-25">
-                      <label>Number Chapter</label>
+                    <div class="row23">
+                      <div class="col-25">
+                        <label>Short Description</label>
+                      </div>
+                      <div class="col-75">
+                        <textarea ngModel name="shortDescription" id="shortDescription" placeholder="short Description"
+                                  style="height:200px" formControlName="shortDescription"></textarea>
+                        <span
+                          *ngIf="addFunFicForm.get('shortDescription')?.invalid && addFunFicForm.get('shortDescription')?.touched"
+                          class="error"><h1>shortDescription is not valid</h1></span>
+                      </div>
                     </div>
-                    <div class="col-75">
-                      <input ngModel name="numberChapter" id="numberChapter" type="text" placeholder="numberChapter" formControlName="numberChapter">
-                      <span *ngIf="addChapterForm.get('numberChapter')?.invalid && addChapterForm.get('numberChapter')?.touched"  class="error"><h1>numberChapter is not valid</h1></span>
+                    <div class="row23">
+                      <div class="col-25">
+                        <label>Genre</label>
+                      </div>
+                      <div class="col-75">
+                        <form [formGroup]="form">
+                          <label>Genre <em></em></label>
+                          <select formControlName="country" class="selectpicker select-custom" data-live-search="true">
+                            <option *ngFor="let genre of genreList"
+                                    [ngValue]="genre.typeGenre">{{genre.typeGenre}}</option>
+                          </select>
+                        </form>
+                      </div>
                     </div>
-                  </div>
-                  <div class="row23">
-                    <div class="col-25">
-                      <label>Name Chapter</label>
+                    <div class="row23">
+                      <div class="col-25">
+                        <label>Tags</label>
+                      </div>
+                      <div class="col-75">
+                        <section>
+                          <a *ngFor="let tags of tagList"><input type="checkbox"
+                                                                 class='tag-link-108 tag-link-position-1 a_f795_0 checks'
+                                                                 title='5 topics' name="Custom Code"
+                                                                 [value]="tags.typeTags"
+                                                                 (change)="onChangeTags($event)">{{tags.typeTags}}
+                          </a>
+                        </section>
+                      </div>
                     </div>
-                    <div class="col-75">
-                      <input ngModel name="nameChapter" id="nameChapter" type="text" placeholder="nameChapter" formControlName="nameChapter">
-                      <span *ngIf="addChapterForm.get('nameChapter')?.invalid && addChapterForm.get('nameChapter')?.touched"  class="error"><h1>nameChapter is not valid</h1></span>
-                    </div>
-                  </div>
-                  <div class="row23">
-                    <div class="col-25">
-                      <label>Text Chapter</label>
-                    </div>
-                  <div class="col-75">
-                      <textarea ngModel name="textChapter" id="textChapter" name="textChapter" placeholder="textChapter" formControlName="textChapter" style="height:200px"></textarea>
-                    <span *ngIf="addChapterForm.get('textChapter')?.invalid && addChapterForm.get('textChapter')?.touched"  class="error"><h1>textChapter is not valid</h1></span>
-                    </div>
-                  </div>
-                  <button type="submit" [disabled]="funFicForm.invalid" class="button button-contactForm btn_1 boxed-btn"
-                          id="clickAddChapter">Add chapter
-                  </button>
-                </form>
-              </div>
-              <div *ngIf="listUserAdmin">
-              <div role="tabpanel" class="tab-pane fade in" id="devlopment">
-                <form action="#" method="post">
-                  <div class="table-responsive">
-                    <table class="checkout-area table text-center">
-                      <ul *ngIf="userList">
-                        <li *ngFor="let user of userList | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalLength }">
-                      <tr></tr>
-                      <tr class="cart_item check-heading">
-                        <td class="ctg-type">Login: {{user.login}}</td>
-                        <td class="cgt-des">Password: {{user.password}}</td>
-                        <td class="ctg-type">Email: {{user.email}}</td>
-                        <td class="cgt-des">Name: {{user.nameUser}}</td>
-                        <td class="ctg-type">Surname: {{user.surnameUser}}</td>
-                        <td class="cgt-des">Background: {{user.background}}</td>
-                        <td class="ctg-type">Language: {{user.language}}</td>
-                        <td class="cgt-des">Status: {{user.status}}</td>
-                      </tr>
-                          <div class="icon-content">
-                              <a class="button" (click)="deleteUser(user.id)">Delete</a>
-                              <a class="button" (click)="blockUser(user.id)">Block</a>
-                              <a class="button" (click)="setAdminUser(user.id)">Set Admin</a>
-                            <a class="button" (click)="getAllFunFic(user.id)">open user Fun fic</a>
-                            <a class="button" (click)="showAddFunFic(user.id)">add Fun fic by user</a>
-                          </div>
-                        </li>
-                      </ul>
-                      <pagination-controls (pageChange)="page = $event"></pagination-controls>
-                    </table>
-                  </div>
-                </form>
-              </div>
-              </div>
-
-              <div *ngIf="listFunFicByUser">
-                <div role="tabpanel" class="tab-pane fade in" id="devlopment">
-                  <form action="#" method="post">
-                    <div class="table-responsive">
-                      <table class="checkout-area table text-center">
-                        <ul *ngIf="funFicList">
-                          <li *ngFor="let funFic of funFicList | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalLength }">
-                            <tr></tr>
-                            <tr class="cart_item check-heading">
-                              <td class="ctg-type">NameFunFIc: {{funFic.nameFun}}</td>
-                              <td class="cgt-des">Description: {{funFic.shortDescription}}</td>
-                              <td class="ctg-type">Rating: {{funFic.rating}}</td>
-                              <td class="cgt-des">Like: {{funFic.like}}</td>
-                              <td class="ctg-type">Created: {{funFic.created}}</td>
-                              <td class="cgt-des">Genre: {{funFic.genre}}</td>
-                            </tr>
-                          </li>
-                        </ul>
-                        <pagination-controls (pageChange)="page = $event"></pagination-controls>
-                      </table>
-                    </div>
+                    <button type="submit" [disabled]="funFicForm.invalid"
+                            class="button button-contactForm btn_1 boxed-btn"
+                            id="clickMessage">Add Fun Fic
+                    </button>
                   </form>
                 </div>
-              </div>
 
-              <div class="container" *ngIf="addFunFicNotEmail">
-                <form id="commentForm" #funFicForm="ngForm" [formGroup]="addFunFicFormId" (ngSubmit)="onFunFicPushByIdUser(addFunFicFormId)">
-                  <div class="row23">
-                    <div class="col-25">
-                      <label>Name Fun Fic</label>
+
+                <div class="container" *ngIf="showAddChapterEmailUser">
+                  <form id="chapterForm" #funFicForm="ngForm" [formGroup]="addChapterForm"
+                        (ngSubmit)="addChapterPush(funFicForm)">
+                    <div class="row23">
+                      <div class="col-25">
+                        <label>Number Chapter</label>
+                      </div>
+                      <div class="col-75">
+                        <input ngModel name="numberChapter" id="numberChapter" type="text" placeholder="numberChapter"
+                               formControlName="numberChapter">
+                        <span
+                          *ngIf="addChapterForm.get('numberChapter')?.invalid && addChapterForm.get('numberChapter')?.touched"
+                          class="error"><h1>numberChapter is not valid</h1></span>
+                      </div>
                     </div>
-                    <div class="col-75">
-                      <input ngModel name="nameFun" id="nameFun" type="text" placeholder="nameFun" formControlName="nameFun">
-                      <span *ngIf="addFunFicFormId.get('nameFun')?.invalid && addFunFicFormId.get('nameFun')?.touched"  class="error"><h1>nameFunFic is not valid</h1></span>
+                    <div class="row23">
+                      <div class="col-25">
+                        <label>Name Chapter</label>
+                      </div>
+                      <div class="col-75">
+                        <input ngModel name="nameChapter" id="nameChapter" type="text" placeholder="nameChapter"
+                               formControlName="nameChapter">
+                        <span
+                          *ngIf="addChapterForm.get('nameChapter')?.invalid && addChapterForm.get('nameChapter')?.touched"
+                          class="error"><h1>nameChapter is not valid</h1></span>
+                      </div>
                     </div>
+                    <div class="row23">
+                      <div class="col-25">
+                        <label>Text Chapter</label>
+                      </div>
+                      <div class="col-75">
+                        <textarea ngModel name="textChapter" id="textChapter" name="textChapter"
+                                  placeholder="textChapter" formControlName="textChapter"
+                                  style="height:200px"></textarea>
+                        <span
+                          *ngIf="addChapterForm.get('textChapter')?.invalid && addChapterForm.get('textChapter')?.touched"
+                          class="error"><h1>textChapter is not valid</h1></span>
+                      </div>
+                    </div>
+                    <button type="submit" [disabled]="funFicForm.invalid"
+                            class="button button-contactForm btn_1 boxed-btn"
+                            id="clickAddChapter">Add chapter
+                    </button>
+                  </form>
+                </div>
+                <div *ngIf="listUserAdmin">
+                  <div role="tabpanel" class="tab-pane fade in" id="devlopment">
+                    <form action="#" method="post">
+                      <div class="table-responsive">
+                        <table class="checkout-area table text-center">
+                          <ul *ngIf="userList">
+                            <li
+                              *ngFor="let user of userList | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalLength }">
+                              <tr></tr>
+                              <tr class="cart_item check-heading">
+                                <td class="ctg-type">Login: {{user.login}}</td>
+                                <td class="cgt-des">Password: {{user.password}}</td>
+                                <td class="ctg-type">Email: {{user.email}}</td>
+                                <td class="cgt-des">Name: {{user.nameUser}}</td>
+                                <td class="ctg-type">Surname: {{user.surnameUser}}</td>
+                                <td class="cgt-des">Background: {{user.background}}</td>
+                                <td class="ctg-type">Language: {{user.language}}</td>
+                                <td class="cgt-des">Status: {{user.status}}</td>
+                              </tr>
+                              <div class="icon-content">
+                                <a class="button" (click)="deleteUser(user.id)">Delete</a>
+                                <a class="button" (click)="blockUser(user.id)">Block</a>
+                                <a class="button" (click)="setAdminUser(user.id)">Set Admin</a>
+                                <a class="button" (click)="getAllFunFic(user.id)">open user Fun fic</a>
+                                <a class="button" (click)="showAddFunFic(user.id)">add Fun fic by user</a>
+                              </div>
+                            </li>
+                          </ul>
+                          <pagination-controls (pageChange)="page = $event"></pagination-controls>
+                        </table>
+                      </div>
+                    </form>
                   </div>
-                  <div class="row23">
-                    <div class="col-25">
-                      <label>Short Description</label>
-                    </div>
-                    <div class="col-75">
-                      <textarea ngModel name="shortDescription" id="shortDescription" name="subject" placeholder="short Description" style="height:200px" formControlName="shortDescription"></textarea>
-                      <span *ngIf="addFunFicFormId.get('shortDescription')?.invalid && addFunFicFormId.get('shortDescription')?.touched"  class="error"><h1>shortDescription is not valid</h1></span>
-                    </div>
+                </div>
+
+                <div *ngIf="listFunFicByUser">
+                  <div role="tabpanel" class="tab-pane fade in" id="devlopment">
+                    <form action="#" method="post">
+                      <div class="table-responsive">
+                        <table class="checkout-area table text-center">
+                          <ul *ngIf="funFicList">
+                            <li
+                              *ngFor="let funFic of funFicList | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalLength }">
+                              <tr></tr>
+                              <tr class="cart_item check-heading">
+                                <td class="ctg-type">NameFunFIc: {{funFic.nameFun}}</td>
+                                <td class="cgt-des">Description: {{funFic.shortDescription}}</td>
+                                <td class="ctg-type">Rating: {{funFic.rating}}</td>
+                                <td class="cgt-des">Like: {{funFic.like}}</td>
+                                <td class="ctg-type">Created: {{funFic.created}}</td>
+                                <td class="cgt-des">Genre: {{funFic.genre}}</td>
+                              </tr>
+                            </li>
+                          </ul>
+                          <pagination-controls (pageChange)="page = $event"></pagination-controls>
+                        </table>
+                      </div>
+                    </form>
                   </div>
+                </div>
 
-                  <div class="row23">
-                    <div class="col-25">
-                      <label>Genre</label>
+                <div class="container" *ngIf="addFunFicNotEmail">
+                  <form id="commentForm" #funFicForm="ngForm" [formGroup]="addFunFicFormId"
+                        (ngSubmit)="onFunFicPushByIdUser(addFunFicFormId)">
+                    <div class="row23">
+                      <div class="col-25">
+                        <label>Name Fun Fic</label>
+                      </div>
+                      <div class="col-75">
+                        <input ngModel name="nameFun" id="nameFun" type="text" placeholder="nameFun"
+                               formControlName="nameFun">
+                        <span *ngIf="addFunFicFormId.get('nameFun')?.invalid && addFunFicFormId.get('nameFun')?.touched"
+                              class="error"><h1>nameFunFic is not valid</h1></span>
+                      </div>
                     </div>
-                    <div class="col-75">
-                      <form [formGroup]="form">
-                        <label>Genre <em></em></label>
-                        <select formControlName="country" class="selectpicker select-custom" data-live-search="true">
-                          <option *ngFor="let genre of genreListId"
-                                  [ngValue]="genre.typeGenre">{{genre.typeGenre}}</option>
-                        </select>
-                      </form>
+                    <div class="row23">
+                      <div class="col-25">
+                        <label>Short Description</label>
+                      </div>
+                      <div class="col-75">
+                        <textarea ngModel name="shortDescription" id="shortDescription" name="subject"
+                                  placeholder="short Description" style="height:200px"
+                                  formControlName="shortDescription"></textarea>
+                        <span
+                          *ngIf="addFunFicFormId.get('shortDescription')?.invalid && addFunFicFormId.get('shortDescription')?.touched"
+                          class="error"><h1>shortDescription is not valid</h1></span>
+                      </div>
                     </div>
-                  </div>
-                  <div class="row23">
-                    <div class="col-25">
-                      <label>Tags</label>
+
+                    <div class="row23">
+                      <div class="col-25">
+                        <label>Genre</label>
+                      </div>
+                      <div class="col-75">
+                        <form [formGroup]="form">
+                          <label>Genre <em></em></label>
+                          <select formControlName="country" class="selectpicker select-custom" data-live-search="true">
+                            <option *ngFor="let genre of genreListId"
+                                    [ngValue]="genre.typeGenre">{{genre.typeGenre}}</option>
+                          </select>
+                        </form>
+                      </div>
                     </div>
-                    <div class="col-75">
-                      <section>
-                        <a *ngFor="let tags of tagListId"><input type="checkbox"
-                                                               class='tag-link-108 tag-link-position-1 a_f795_0 checks'
-                                                               title='5 topics' name="Custom Code" [value]="tags.typeTags"
-                                                               (change)="onChangeTags($event)">{{tags.typeTags}}
-                        </a>
-                      </section>
+                    <div class="row23">
+                      <div class="col-25">
+                        <label>Tags</label>
+                      </div>
+                      <div class="col-75">
+                        <section>
+                          <a *ngFor="let tags of tagListId"><input type="checkbox"
+                                                                   class='tag-link-108 tag-link-position-1 a_f795_0 checks'
+                                                                   title='5 topics' name="Custom Code"
+                                                                   [value]="tags.typeTags"
+                                                                   (change)="onChangeTags($event)">{{tags.typeTags}}
+                          </a>
+                        </section>
+                      </div>
                     </div>
-                  </div>
 
 
-
-
-                  <button type="submit" [disabled]="addFunFicFormId.invalid" class="button button-contactForm btn_1 boxed-btn"
-                          id="clickAddFunFicId">Add Fun Fic
-                  </button>
-                </form>
+                    <button type="submit" [disabled]="addFunFicFormId.invalid"
+                            class="button button-contactForm btn_1 boxed-btn"
+                            id="clickAddFunFicId">Add Fun Fic
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-</div>
+  </div>
 
 </div>
 

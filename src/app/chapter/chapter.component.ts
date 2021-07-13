@@ -15,33 +15,32 @@ import {User} from "../model/user";
 })
 export class ChapterComponent implements OnInit {
   // @ts-ignore
-  @Input() funFicResultSearch:FunFic[]
+  @Input() funFicResultSearch: FunFic[]
   // @ts-ignore
   @Input() showFunFic
   public totalLength: any;
-  public page: number=1;
+  public page: number = 1;
   public showChapter = false;
   public showLike = false;
   public showAddFavorite = false;
   // @ts-ignore
-  public result:string;
+  public result: string;
   // @ts-ignore
   public funFicList: FunFic[];
   // @ts-ignore
   public chapterList: Chapter[];
   // @ts-ignore
-  public favorite:Favorite;
+  public favorite: Favorite;
   // @ts-ignore
-  public user:User;
+  public user: User;
   // @ts-ignore
   public form: FormGroup;
   // @ts-ignore
-  public ratingResult:number;
+  public ratingResult: number;
   // @ts-ignore
-  public chapter:Chapter
+  public chapter: Chapter
   @Output()
   showChapterSearch = new EventEmitter();
-
 
 
   constructor(private chapterService: ChapterService, private funFicService: FunFicService) {
@@ -50,7 +49,7 @@ export class ChapterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public pushMyFavorite(idChapter: number){
+  public pushMyFavorite(idChapter: number) {
     // @ts-ignore
     this.favoriteService.addFavorite(idChapter, JSON.parse(sessionStorage.getItem('user'))).subscribe(
       (response: Favorite) => {
@@ -63,19 +62,19 @@ export class ChapterComponent implements OnInit {
     )
   }
 
-  public getIdChapter(id: number){
+  public getIdChapter(id: number) {
     this.chapterService.getChapterList(id).subscribe(
       (response: Chapter[]) => {
         this.chapterList = response;
         console.log(response);
         // @ts-ignore
         let user = JSON.parse(sessionStorage.getItem('user'));
-        if (user != null){
+        if (user != null) {
           this.showAddFavorite = true;
           this.showLike = true;
         }
-      this.showFunFic = false;
-      this.showChapter = true;
+        this.showFunFic = false;
+        this.showChapter = true;
         //this.showChapterSearch.emit();
       },
       (error: HttpErrorResponse) => {
@@ -113,7 +112,6 @@ export class ChapterComponent implements OnInit {
       }
     )
   }
-
 
 
 }

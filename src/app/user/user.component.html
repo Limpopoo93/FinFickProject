@@ -8,12 +8,15 @@
               <ul class="nav idea-tab" role="tablist">
                 <table style="margin: auto">
                   <tr>
-                    <th>   <li role="presentation"><a class="button" aria-controls="design" role="tab" data-toggle="tab"
-                                                      (click)="getUserListFunficId()">FunFic List</a></li></th>
-                    <th> <li role="presentation"><a class="button" aria-controls="devlopment" role="tab" data-toggle="tab">Updated
-                      info</a></li></th>
-                    <th> <li role="presentation"><a class="button" aria-controls="devlopment" role="tab" data-toggle="tab" (click)="getUserListFavorite()">Мои
-                      закладки</a></li></th>
+                    <th>
+                      <li role="presentation"><a class="button" aria-controls="design" role="tab" data-toggle="tab"
+                                                 (click)="getUserListFunficId()">FunFic List</a></li>
+                    </th>
+                    <th>
+                      <li role="presentation"><a class="button" aria-controls="devlopment" role="tab" data-toggle="tab"
+                                                 (click)="getUserListFavorite()">Мои
+                        закладки</a></li>
+                    </th>
                   </tr>
                 </table>
               </ul>
@@ -33,9 +36,10 @@
         <table>
           <th>
             <ul *ngIf="funFicByFavorite">
-              <li *ngFor="let funFiction of funFicByFavorite | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalLength }">
+              <li
+                *ngFor="let funFiction of funFicByFavorite | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalLength }">
 
-                 <div class="ebox1"><span class="fa fa-pagelines"></span>
+                <div class="ebox1"><span class="fa fa-pagelines"></span>
                   <div class="title">
                     <h2>Name: {{funFiction.nameFun}}</h2>
                     <div *ngFor="let tags of funFiction.tags">
@@ -46,7 +50,7 @@
                   <p>Genre: {{funFiction.genre}}</p>
                   <a class="button" (click)="deleteFunFicFavorite(funFiction.id)">Delete fun fic</a>
                   <a class="button" (click)="readFunFicFavorite(funFiction.id)">Read fun fic</a>
-                 </div>
+                </div>
               </li>
             </ul>
             <pagination-controls (pageChange)="page = $event"></pagination-controls>
@@ -62,25 +66,26 @@
         <div *ngIf="readChapterByFavorite">
           <ul *ngIf="chapterListByFavorite">
             <li *ngFor="let chapter of chapterListByFavorite">
-          <div id="featured-wrapper1">
-            <section class="blog_area single-post-area section-padding mySetting">
-              <div class="container">
-                <div class="row">
-                  <div class="col-lg-8 posts-list">
-                    <div class="single-post">
-                      <div class="blog_details">
-                        <h2>
-                          Chapter №{{chapter.numberChapter}}
-                        </h2>
+              <div id="featured-wrapper1">
+                <section class="blog_area single-post-area section-padding mySetting">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-lg-8 posts-list">
+                        <div class="single-post">
+                          <div class="blog_details">
+                            <h2>
+                              Chapter №{{chapter.numberChapter}}
+                            </h2>
 
-                        <h2>{{chapter.nameChapter}}
-                        </h2>
-                        <ul class="blog-info-link mt-3 mb-4">
-                          <li><i class="fa fa-user"></i>Amount likes: {{chapter.like}}<a class="fa fa-user"
-                                                                                         (click)="addLikes(chapter.id)">add
-                            like</a></li>
-                          <li><i class="fa fa-comments"></i>Rating: {{chapter.rating.toFixed(2)}}<a class="fa fa-user" (click)="addRating(chapter.id)">Add rating:</a>
-                            <span class="custom-dropdown big">
+                            <h2>{{chapter.nameChapter}}
+                            </h2>
+                            <ul class="blog-info-link mt-3 mb-4">
+                              <li><i class="fa fa-user"></i>Amount likes: {{chapter.like}}<a class="fa fa-user"
+                                                                                             (click)="addLikes(chapter.id)">add
+                                like</a></li>
+                              <li><i class="fa fa-comments"></i>Rating: {{chapter.rating.toFixed(2)}}<a
+                                class="fa fa-user" (click)="addRating(chapter.id)">Add rating:</a>
+                                <span class="custom-dropdown big">
                           <form [formGroup]="form">
                           <select formControlName="rating">
                             <option [ngValue]="1">1</option>
@@ -93,21 +98,19 @@
                         </span></li>
 
 
-
-
-                        </ul>
-                        <ul class="blog-info-link mt-3 mb-4">
-                        </ul>
-                        <p class="excert">
-                          {{chapter.textChapter}}
-                        </p>
+                            </ul>
+                            <ul class="blog-info-link mt-3 mb-4">
+                            </ul>
+                            <p class="excert">
+                              {{chapter.textChapter}}
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </section>
               </div>
-            </section>
-          </div>
             </li>
           </ul>
         </div>
@@ -212,7 +215,9 @@
                       <li><i class="fa fa-user"></i>Amount likes: {{chapter.like}}<a class="fa fa-user"
                                                                                      (click)="addLikes(chapter.id)">add
                         like</a></li>
-                      <li><i class="fa fa-comments"></i>Rating: {{chapter.rating.toFixed(2)}}<a class="fa fa-user" (click)="addRating(chapter.id)">Add rating:</a>
+                      <li><i class="fa fa-comments"></i>Rating: {{chapter.rating.toFixed(2)}}<a class="fa fa-user"
+                                                                                                (click)="addRating(chapter.id)">Add
+                        rating:</a>
                         <span class="custom-dropdown big">
                           <form [formGroup]="form">
                           <select formControlName="rating">
@@ -224,8 +229,6 @@
                           </select>
                           </form>
                         </span></li>
-
-
 
 
                     </ul>
@@ -243,6 +246,9 @@
       </li>
     </ul>
   </div>
+
+
+
   <div *ngIf="addFunFicUser">
     <div class="comment-form">
       <h4>Add Fun Fic</h4>
@@ -250,8 +256,10 @@
             (ngSubmit)="onFunFicPush(funFicForm)">
         <div class="col-sm-6">
           <div class="form-group">
-            <input class="form-control" ngModel name="nameFun" id="nameFun" type="text" placeholder="nameFunFic" formControlName="nameFunFic">
-            <span *ngIf="addFunFicForm.get('nameFunFic')?.invalid && addFunFicForm.get('nameFunFic')?.touched"  class="error"><h1>nameFunFic is not valid</h1></span>
+            <input class="form-control" ngModel name="nameFun" id="nameFun" type="text" placeholder="nameFunFic"
+                   formControlName="nameFun">
+            <span *ngIf="addFunFicForm.get('nameFunFic')?.invalid && addFunFicForm.get('nameFunFic')?.touched"
+                  class="error"><h1>nameFunFic is not valid</h1></span>
           </div>
         </div>
         <div class="row">
@@ -260,7 +268,9 @@
               <textarea class="form-control w-100" ngModel name="shortDescription" id="shortDescription" cols="30"
                         rows="9" placeholder="shortDescription" formControlName="shortDescription">
               </textarea>
-              <span *ngIf="addFunFicForm.get('shortDescription')?.invalid && addFunFicForm.get('shortDescription')?.touched"  class="error"><h1>shortDescription is not valid</h1></span>
+              <span
+                *ngIf="addFunFicForm.get('shortDescription')?.invalid && addFunFicForm.get('shortDescription')?.touched"
+                class="error"><h1>shortDescription is not valid</h1></span>
             </div>
           </div>
           <div class="col-sm-6">
@@ -312,41 +322,48 @@
     </div>
   </div>
 </div>
+
+
+
+
 <div *ngIf="addChapterUser">
 
-    <div class="comment-form">
-      <h4>Add Fun Fic</h4>
-      <form class="form-contact comment_form" id="chapterForm" #funFicForm="ngForm" [formGroup]="addChapterForm"
-            (ngSubmit)="addChapterPush(funFicForm)">
-        <div class="col-sm-6">
-          <div class="form-group">
-            <input class="form-control" ngModel name="numberChapter" id="numberChapter" type="text"
-                   placeholder="numberChapter" formControlName="numberChapter">
-            <span *ngIf="addChapterForm.get('numberChapter')?.invalid && addChapterForm.get('numberChapter')?.touched"  class="error"><h1>numberChapter is not valid</h1></span>
-          </div>
+  <div class="comment-form">
+    <h4>Add Fun Fic</h4>
+    <form class="form-contact comment_form" id="chapterForm" #funFicForm="ngForm" [formGroup]="addChapterForm"
+          (ngSubmit)="addChapterPush(funFicForm)">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <input class="form-control" ngModel name="numberChapter" id="numberChapter" type="text"
+                 placeholder="numberChapter" formControlName="numberChapter">
+          <span *ngIf="addChapterForm.get('numberChapter')?.invalid && addChapterForm.get('numberChapter')?.touched"
+                class="error"><h1>numberChapter is not valid</h1></span>
         </div>
-        <div class="col-sm-6">
-          <div class="form-group">
-            <input class="form-control" ngModel name="nameChapter" id="nameChapter" type="text"
-                   placeholder="nameChapter" formControlName="nameChapter">
-            <span *ngIf="addChapterForm.get('nameChapter')?.invalid && addChapterForm.get('nameChapter')?.touched"  class="error"><h1>nameChapter is not valid</h1></span>
-          </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <input class="form-control" ngModel name="nameChapter" id="nameChapter" type="text"
+                 placeholder="nameChapter" formControlName="nameChapter">
+          <span *ngIf="addChapterForm.get('nameChapter')?.invalid && addChapterForm.get('nameChapter')?.touched"
+                class="error"><h1>nameChapter is not valid</h1></span>
         </div>
-        <div class="row">
-          <div class="col-12">
-            <div class="form-group">
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="form-group">
                               <textarea class="form-control w-100" ngModel name="textChapter" id="textChapter"
                                         cols="30" rows="9"
                                         placeholder="textChapter" formControlName="textChapter"></textarea>
-            </div>
-            <span *ngIf="addChapterForm.get('textChapter')?.invalid && addChapterForm.get('textChapter')?.touched"  class="error"><h1>textChapter is not valid</h1></span>
           </div>
+          <span *ngIf="addChapterForm.get('textChapter')?.invalid && addChapterForm.get('textChapter')?.touched"
+                class="error"><h1>textChapter is not valid</h1></span>
         </div>
-        <div class="form-group">
-          <button type="submit" [disabled]="funFicForm.invalid"
-                  class="button button-contactForm btn_1 boxed-btn" id="clickAddChapter">Add chapter
-          </button>
-        </div>
-      </form>
-    </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" [disabled]="funFicForm.invalid"
+                class="button button-contactForm btn_1 boxed-btn" id="clickAddChapter">Add chapter
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

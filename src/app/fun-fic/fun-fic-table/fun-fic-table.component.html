@@ -49,7 +49,9 @@
                       <li><i class="fa fa-user"></i>Amount likes: {{chapter.like}}<a class="fa fa-user"
                                                                                      (click)="addLikes(chapter.id)">add
                         like</a></li>
-                      <li><i class="fa fa-comments"></i>Rating: {{chapter.rating.toFixed(2) }}<a class="fa fa-user" (click)="addRating(chapter.id)">Add rating:</a>
+                      <li><i class="fa fa-comments"></i>Rating: {{chapter.rating.toFixed(2) }}<a class="fa fa-user"
+                                                                                                 (click)="addRating(chapter.id)">Add
+                        rating:</a>
                         <span class="custom-dropdown big">
                           <form [formGroup]="form">
                           <select formControlName="rating">
@@ -61,8 +63,6 @@
                           </select>
                           </form>
                         </span></li>
-
-
 
 
                     </ul>
@@ -137,7 +137,7 @@
                       </div>
                       <div class="form-group">
                         <button type="submit" [disabled]="commentForm.invalid"
-                                class="button button-contactForm btn_1 boxed-btn" id="clickMessage">Send Message
+                                class="button button-contactForm btn_1 boxed-btn" id="clickMessages">Send Message
                         </button>
                       </div>
                     </form>

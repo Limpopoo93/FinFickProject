@@ -56,7 +56,7 @@ export class AdminComponent implements OnInit {
   // @ts-ignore
   public idUserByAdmin: number;
   // @ts-ignore
-  public result:string;
+  public result: string;
 
   constructor(private funFicService: FunFicService, private chapterService: ChapterService, private userService: UserService, private genreService: GenreService, private tagsService: TagsService) {
     this.form = new FormGroup({

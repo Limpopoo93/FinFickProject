@@ -1,3 +1,6 @@
+.myClass{
+  color : red;
+}
 @font-face
 {
   font-family: 'FontAwesome';
@@ -1330,31 +1333,6 @@ ul.contact li a.icon-rss:before
 {
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 form {
   position: relative;

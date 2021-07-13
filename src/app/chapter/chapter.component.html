@@ -6,26 +6,26 @@
           <div class="col-md-9 col-sm-8 col-xs-12">
             <div class="idea-tab-content">
               <div class="tab-content">
-                <div   *ngIf="showFunFic">
+                <div *ngIf="showFunFic">
                   <div role="tabpanel" class="tab-pane fade in" id="devlopment">
                     <form action="#" method="post">
                       <div class="table-responsive">
                         <table class="checkout-area table text-center">
                           <th>
 
-                              <li
-                                *ngFor="let funFiction of funFicResultSearch | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalLength }">
+                            <li
+                              *ngFor="let funFiction of funFicResultSearch | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalLength }">
 
-                                <div><span></span>
-                                  <div class="title">
-                                    <h2>Name: {{funFiction.nameFun}}</h2>
-                                    <div *ngFor="let tags of funFiction.tags">
-                                      <span class="byline">Tags: {{tags.typeTags}}</span></div>
-                                  </div>
-                                  <p>Description: {{funFiction.shortDescription}}</p>
-                                  <p>Genre: {{funFiction.genre}}</p>
-                                  <a (click)="getIdChapter(funFiction.id)" class="button">Read Chapter</a></div>
-                              </li>
+                              <div><span></span>
+                                <div class="title">
+                                  <h2>Name: {{funFiction.nameFun}}</h2>
+                                  <div *ngFor="let tags of funFiction.tags">
+                                    <span class="byline">Tags: {{tags.typeTags}}</span></div>
+                                </div>
+                                <p>Description: {{funFiction.shortDescription}}</p>
+                                <p>Genre: {{funFiction.genre}}</p>
+                                <a (click)="getIdChapter(funFiction.id)" class="button">Read Chapter</a></div>
+                            </li>
 
                             <pagination-controls (pageChange)="page = $event"></pagination-controls>
                           </th>
@@ -55,7 +55,8 @@
                                       <li><i class="fa fa-user"></i>Amount likes: {{chapter.like}}<a class="fa fa-user"
                                                                                                      (click)="addLikes(chapter.id)">add
                                         like</a></li>
-                                      <li><i class="fa fa-comments"></i>Rating: {{chapter.rating.toFixed(2) }}<a class="fa fa-user" (click)="addRating(chapter.id)">Add rating:</a>
+                                      <li><i class="fa fa-comments"></i>Rating: {{chapter.rating.toFixed(2) }}<a
+                                        class="fa fa-user" (click)="addRating(chapter.id)">Add rating:</a>
                                         <span class="custom-dropdown big">
                           <form [formGroup]="form">
                           <select formControlName="rating">
@@ -69,8 +70,6 @@
                         </span></li>
 
 
-
-
                                     </ul>
                                     <ul class="blog-info-link mt-3 mb-4">
                                     </ul>
@@ -81,7 +80,8 @@
                                 </div>
                                 <div class="comments-area" *ngIf="showAddFavorite">
                                   <div class="blog_details">
-                                    <button type="submit" class="button25" (click)="pushMyFavorite(chapter.id)" id="clickAddChapter">
+                                    <button type="submit" class="button25" (click)="pushMyFavorite(chapter.id)"
+                                            id="clickAddChapter">
                                       Add my favorite
                                     </button>
                                   </div>

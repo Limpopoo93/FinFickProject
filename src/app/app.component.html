@@ -1,15 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <title></title>
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+  <meta name="keywords" content=""/>
+  <meta name="description" content=""/>
+  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet"/>
 
 
 </head>
 <body>
+<div>
 <div id="header-wrapper">
   <div id="header" class="container">
     <div id="logo">
@@ -19,13 +20,13 @@
       <ul>
         <li class="current_page_item"><a (click)="showStartListPage()" accesskey="1" title="">Home</a></li>
         <a *ngIf="reverseForm">
-        <li><a (click)="showSingIn()" accesskey="2" title="">Sing in</a></li>
-        <li><a (click)="showSingUp()" accesskey="3" title="">Sing up</a></li>
+          <li><a (click)="showSingIn()" accesskey="2" title="">Sing in</a></li>
+          <li><a (click)="showSingUp()" accesskey="3" title="">Sing up</a></li>
         </a>
         <a *ngIf="showFunction">
           <li><a (click)="showSetting()" accesskey="5" title="">setting</a></li>
           <a *ngIf="showAdminFunction">
-          <li><a (click)="showAdmin()" accesskey="5" title="">Admin</a></li>
+            <li><a (click)="showAdmin()" accesskey="5" title="">Admin</a></li>
           </a>
           <li><a (click)="logout()" accesskey="4" title="">out</a></li>
         </a>
@@ -43,26 +44,26 @@
   <div id="banner-wrapper">
     <div id="banner" class="container">
       <h2>Welcome to fun fic project</h2>
-        </div>
+    </div>
   </div>
 </div>
 <!--
 для таблицы fun fic
 -->
 <div *ngIf="showFunFicTable">
-<app-fun-fic-table></app-fun-fic-table>
+  <app-fun-fic-table></app-fun-fic-table>
 </div>
 <!--
 для формы логина
 -->
 <div *ngIf="showSingInForm">
-<app-login (onShowElementIn)="singInFormReverse()"></app-login>
+  <app-login (onShowElementIn)="singInFormReverse()"></app-login>
 </div>
 <!--
 для формы регистрации
 -->
 <div *ngIf="showSingUpForm">
-<app-registration (onShowElementUn)="singInFormReverse()"></app-registration>
+  <app-registration (onShowElementUn)="singInFormReverse()"></app-registration>
 </div>
 <!--
 форма лист chapter
@@ -72,7 +73,7 @@
 форма персональных данных setting
 -->
 <div *ngIf="showSettingUser">
-<app-user [user]="user1"></app-user>
+  <app-user [user]="user1"></app-user>
 </div>
 <!--
 форма админа
@@ -81,10 +82,12 @@
   <app-admin></app-admin>
 </div>
 <div *ngIf="searchFunFic">
-  <app-chapter [funFicResultSearch]="funFicResultSearch" (showChapterSearch)="singInFormReverse()" [showFunFic]="showFunFic"></app-chapter>
+  <app-chapter [funFicResultSearch]="funFicResultSearch" (showChapterSearch)="singInFormReverse()"
+               [showFunFic]="showFunFic"></app-chapter>
 </div>
 <div id="copyright" class="container">
   <p>&copy; Minsk fun fic project </p>
+</div>
 </div>
 </body>
 </html>
